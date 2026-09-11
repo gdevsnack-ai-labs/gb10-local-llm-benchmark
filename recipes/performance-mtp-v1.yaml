@@ -1,0 +1,14 @@
+name: Performance MTP v1
+suite: server-performance
+version: 1
+description: MTP speculative bench - requires model with MTP heads or draft_model
+config:
+  server_url: ""
+  managed: true
+  spec_type: draft-mtp
+  draft_model: /path/to/draft-model.gguf
+  concurrency: 4
+  requests: 8
+  gen_tokens: 128
+  cache_prompt: false
+  prompt: "Explain why reproducible benchmark methodology matters. "

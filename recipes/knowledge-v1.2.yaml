@@ -1,0 +1,11 @@
+name: Knowledge Benchmark v1.2
+suite: knowledge
+version: 1.2
+description: Deterministic 100-question knowledge benchmark with difficulty summaries
+config:
+  dataset: datasets/knowledge-v1.2/knowledge-v1.2.jsonl
+  dataset_version: 1.2
+  server_url: ""
+  thinking_mode: no-think
+  thinking_budget: 0
+  max_tokens: 128

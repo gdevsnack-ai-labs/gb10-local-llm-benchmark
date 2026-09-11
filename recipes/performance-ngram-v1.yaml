@@ -1,0 +1,13 @@
+name: Performance Ngram v1 (free speculative)
+suite: server-performance
+version: 1
+description: Basic bench with ngram speculative (free, no draft model) - compare to basic
+config:
+  server_url: ""
+  managed: true
+  spec_type: ngram-simple
+  concurrency: 4
+  requests: 8
+  gen_tokens: 128
+  cache_prompt: false
+  prompt: "Explain why reproducible benchmark methodology matters. "

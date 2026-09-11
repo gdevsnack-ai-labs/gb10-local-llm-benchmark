@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GB10 public model benchmark summary",
+  "type": "object",
+  "required": ["model", "variant", "quantization", "hardware", "benchmark_versions", "performance", "server_performance", "knowledge", "coding", "tool_call", "agent_single", "agent_multi", "source_runs"],
+  "properties": {
+    "model": {"type": "string"},
+    "variant": {"type": "string"},
+    "quantization": {"type": "string"},
+    "hardware": {"type": "string"},
+    "llama_cpp_commit": {"type": ["string", "null"]},
+    "benchmark_versions": {"type": "object"},
+    "performance": {"type": "object"},
+    "server_performance": {"type": "object"},
+    "knowledge": {"type": "object"},
+    "coding": {"type": "object"},
+    "tool_call": {"type": "object"},
+    "agent_single": {"type": "object"},
+    "agent_multi": {"type": "object"},
+    "source_runs": {"type": "object", "additionalProperties": {"type": ["string", "null"]}}
+  },
+  "additionalProperties": true
+}

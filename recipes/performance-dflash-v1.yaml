@@ -1,0 +1,14 @@
+name: Performance DFlash v1
+suite: server-performance
+version: 1
+description: DFlash speculative bench - requires draft model
+config:
+  server_url: ""
+  managed: true
+  spec_type: draft-dflash
+  draft_model: /path/to/draft-model.gguf
+  concurrency: 4
+  requests: 8
+  gen_tokens: 128
+  cache_prompt: false
+  prompt: "Explain why reproducible benchmark methodology matters. "

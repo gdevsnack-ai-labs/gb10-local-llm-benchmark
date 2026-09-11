@@ -1,0 +1,8 @@
+name: Knowledge Benchmark v1
+suite: knowledge
+version: 1
+description: Reproducible 25-question knowledge benchmark across five categories
+config:
+  dataset: datasets/knowledge-v1/knowledge-v1.jsonl
+  dataset_version: 1
+  server_url: ""

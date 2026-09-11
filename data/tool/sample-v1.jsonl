@@ -1,0 +1,3 @@
+{"id":"t1","prompt":"Use calculator to compute 15 * 23. You have tool calculator with args {\"a\": int, \"b\": int, \"op\": \"*\"}.","expected_tool":"calculator","expected_args":{"a":15,"b":23,"op":"*"},"expected_result":345}
+{"id":"t2","prompt":"Lookup the capital of Japan from kv store. Tool is kv_lookup with {\"key\": \"japan_capital\"}.","expected_tool":"kv_lookup","expected_args":{"key":"japan_capital"},"expected_result":"Tokyo"}
+{"id":"t3","prompt":"Read file /tmp/data.txt which contains 'hello world'. Use read_file with {\"path\": \"/tmp/data.txt\"}.","expected_tool":"read_file","expected_args":{"path":"/tmp/data.txt"},"expected_result":"hello world"}

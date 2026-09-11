@@ -1,0 +1,7 @@
+name: Knowledge Sample v1
+suite: knowledge
+version: 1
+description: Sample 5-question knowledge/math/reasoning test - dummy dataset for Phase 3
+config:
+  dataset: data/knowledge/sample-v1.jsonl
+  server_url: http://127.0.0.1:9504

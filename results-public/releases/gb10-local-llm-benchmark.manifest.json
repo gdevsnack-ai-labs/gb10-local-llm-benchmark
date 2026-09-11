@@ -1,0 +1,24 @@
+{
+  "release_id": "gb10-local-llm-benchmark",
+  "schema_version": "gb10-benchmark-public-v1",
+  "sha256": "7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738",
+  "generated_at": "2026-09-10",
+  "updated_at": "2026-09-10",
+  "counts": {
+    "models": 23,
+    "suites": 7,
+    "revalidated_evaluator_runs": 76,
+    "reused_source_runs": 57,
+    "fresh_full_cycle_runs": 28,
+    "source_run_references": 161
+  },
+  "raw_runs_public": false,
+  "generated_from": [
+    "results-public/releases/gb10-llm-benchmark-v1-20260906.json",
+    "docs/public/LING30_FLASH_FULL_BENCHMARK_V1.md",
+    "docs/public/N25_MINI_FULL_BENCHMARK_V1.md",
+    "runs/full-cycles/ling30-flash-mxfp4-v1-full-20260907-183412-190139/manifest.json",
+    "runs/full-cycles/n25-mini-v1-full-20260910-174334-184806/manifest.json",
+    "runs/<source-run-id>/manifest.json + result.json"
+  ]
+}

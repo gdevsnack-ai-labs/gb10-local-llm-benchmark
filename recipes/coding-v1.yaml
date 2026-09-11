@@ -1,0 +1,10 @@
+name: Coding Benchmark v1
+suite: coding
+version: 1
+description: Reproducible 12-task Python coding benchmark with hidden pytest evaluation
+config:
+  dataset: datasets/coding-v1/coding-v1.jsonl
+  dataset_version: 1
+  sandbox: process
+  test_timeout_s: 10
+  save_repository: true

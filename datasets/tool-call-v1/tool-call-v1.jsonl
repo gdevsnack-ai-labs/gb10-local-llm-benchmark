@@ -1,0 +1,15 @@
+{"id": "single-001", "category": "single_tool", "prompt": "계산기를 사용해서 15 × 23을 계산하라.", "expected": {"tools": [{"name": "calculator", "arguments": {"expression": "15 * 23"}}], "final": "345"}}
+{"id": "single-002", "category": "single_tool", "prompt": "KV 저장소에서 key `capital:japan`의 값을 조회하라.", "expected": {"tools": [{"name": "kv_get", "arguments": {"key": "capital:japan"}}], "final": "Tokyo"}}
+{"id": "single-003", "category": "single_tool", "prompt": "파일 `/tmp/data.txt`의 내용을 읽어라.", "expected": {"tools": [{"name": "read_file", "arguments": {"path": "/tmp/data.txt"}}], "final_from_tool": true}}
+{"id": "single-004", "category": "single_tool", "prompt": "계산기를 사용해서 (120 / 5) + 7을 계산하라.", "expected": {"tools": [{"name": "calculator", "arguments": {"expression": "(120 / 5) + 7"}}], "final": "31"}}
+{"id": "single-005", "category": "single_tool", "prompt": "KV 저장소에서 key `capital:korea`의 값을 조회하라.", "expected": {"tools": [{"name": "kv_get", "arguments": {"key": "capital:korea"}}], "final": "Seoul"}}
+{"id": "selection-001", "category": "tool_selection", "prompt": "`/tmp/data.txt`에 무엇이 들어있는지 확인하라.", "expected": {"tools": [{"name": "read_file", "arguments": {"path": "/tmp/data.txt"}}], "forbid": ["calculator", "kv_get"]}}
+{"id": "selection-002", "category": "tool_selection", "prompt": "`capital:france` 값을 확인하라.", "expected": {"tools": [{"name": "kv_get", "arguments": {"key": "capital:france"}}], "forbid": ["calculator", "read_file"]}}
+{"id": "selection-003", "category": "tool_selection", "prompt": "37 × 19의 정확한 값을 도구를 사용해서 구하라.", "expected": {"tools": [{"name": "calculator", "arguments": {"expression": "37 * 19"}}], "final": "703"}}
+{"id": "multi-001", "category": "multi_step", "prompt": "KV 저장소에서 `capital:japan`을 조회한 뒤, 그 문자열의 길이를 계산기를 사용해 구하라.", "expected": {"sequence": ["kv_get", "calculator"], "dependency": true, "final": "5"}}
+{"id": "multi-002", "category": "multi_step", "prompt": "`/tmp/data.txt`를 읽고, 파일 내용의 단어 수를 계산해 최종 숫자를 답하라.", "expected": {"sequence": ["read_file", "calculator"], "dependency": true, "final_type": "numeric"}}
+{"id": "multi-003", "category": "multi_step", "prompt": "계산기로 12 × 4를 구한 뒤 그 결과에 5를 더해 최종 값을 구하라. 두 계산 모두 계산기를 사용하라.", "expected": {"sequence": ["calculator", "calculator"], "dependency": true, "final": "53"}}
+{"id": "recovery-001", "category": "recovery", "prompt": "파일 `/tmp/missing.txt`를 읽어보고, 실패하면 `/tmp/data.txt`를 읽어서 그 내용을 답하라.", "expected": {"sequence": ["read_file", "read_file"], "first_may_fail": true, "recovery_path": "/tmp/data.txt"}}
+{"id": "recovery-002", "category": "recovery", "prompt": "KV 저장소에서 `capital:unknown`을 조회해보고 값이 없으면 `capital:korea`를 조회해서 답하라.", "expected": {"sequence": ["kv_get", "kv_get"], "first_may_fail": true, "recovery_key": "capital:korea", "final": "Seoul"}}
+{"id": "notool-001", "category": "no_tool", "prompt": "도구를 사용하지 말고 숫자 7을 그대로 답하라.", "expected": {"tool_calls": 0, "final": "7"}}
+{"id": "notool-002", "category": "no_tool", "prompt": "도구를 사용하지 말고 문자열 `benchmark`를 그대로 답하라.", "expected": {"tool_calls": 0, "final": "benchmark"}}

@@ -1,0 +1,14 @@
+name: Performance Standard v1
+suite: performance
+version: 1
+description: GB10 standard performance recipe - validated after repeated runs on gemma4 Q6_K
+config:
+  prompt_tokens: [512, 2048, 8192]
+  gen_tokens: [128, 512]
+  repetitions: 5
+  n_gpu_layers: 99
+  flash_attn: true
+  cache_policy: cold
+  warmup: false
+  batch_size: 2048
+  ubatch_size: 512

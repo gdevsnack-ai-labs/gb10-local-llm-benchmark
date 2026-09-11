@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "canonical_conditions": {
+    "reasoning_mode": "off",
+    "hardware": "NVIDIA DGX Spark GB10",
+    "raw_runs_public": false,
+    "historical_compatibility": "Existing Performance, Server-performance, and Coding v1 results are reused; evaluator suites use Knowledge v1.2, Tool-call v1.1, Agent-single v1.1, Agent-multi v1.1."
+  },
+  "suite_versions": {
+    "performance": "existing-v1",
+    "server_performance": "existing-v1",
+    "knowledge": "1.2",
+    "coding": "existing-v1",
+    "tool_call": "1.1",
+    "agent_single": "1.1",
+    "agent_multi": "1.1"
+  },
+  "datasets": {
+    "knowledge-v1": {"path": "datasets/knowledge-v1/knowledge-v1.jsonl", "sha256": "44883816f2b11f8560c69a6c28933c2496ea137a5b98860dd102d397349f650c", "scoring_type": "deterministic normalized answer matching", "reasoning": "off", "historical_compatibility": "legacy v1"},
+    "knowledge-v1.2": {"path": "datasets/knowledge-v1.2/knowledge-v1.2.jsonl", "sha256": "66e691da99a416fdf59887930d40c0dd7d12538b9f81b818e15e5bd0f6584079", "scoring_type": "deterministic normalized answer matching", "reasoning": "off", "historical_compatibility": "canonical Knowledge evaluator"},
+    "coding-v1": {"path": "datasets/coding-v1/coding-v1.jsonl", "sha256": "53a283316be1ab63ee04c051d5194decbc3c7e27b76e5c177293bcab87dccbbd", "scoring_type": "pytest execution", "reasoning": "off", "historical_compatibility": "existing Coding v1"},
+    "tool-call-v1.1": {"path": "datasets/tool-call-v1/tool-call-v1.jsonl", "sha256": "8c0c1abefa2825c97341afaee620adbbf60cf43add20e0535c599872733065d5", "scoring_type": "deterministic tool/argument/execution", "reasoning": "off", "historical_compatibility": "canonical Tool-call evaluator"},
+    "agent-single-v1.1": {"path": "datasets/agent-single-v1/agent-single-v1.jsonl", "sha256": "188a63368a0631cc6cc6a80a8eed165f559f8131b5196ba28a951c428479b5d5", "scoring_type": "deterministic completion/step/tool", "reasoning": "off", "historical_compatibility": "canonical Agent-single evaluator"},
+    "agent-multi-v1.1": {"path": "datasets/agent-multi-v1/agent-multi-v1.jsonl", "sha256": "ee9bc5035f9ca17be36a3749e62322d767232570960ae80d3041b2b1741a010a", "scoring_type": "deterministic role/handoff/completion", "reasoning": "off", "historical_compatibility": "canonical Agent-multi evaluator"}
+  }
+}

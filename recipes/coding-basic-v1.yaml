@@ -1,0 +1,7 @@
+name: Coding Basic v1
+suite: coding
+config:
+  dataset: data/coding/sample-v1.jsonl
+  sandbox: process
+  timeout_s: 300
+  save_repository: true

@@ -1,0 +1,9 @@
+name: Tool Call Benchmark v1
+suite: tool-call
+version: 1
+description: Reproducible 15-task tool selection, execution, recovery, and no-tool benchmark
+config:
+  dataset: datasets/tool-call-v1/tool-call-v1.jsonl
+  dataset_version: 1
+  max_steps: 6
+  sandbox: deterministic-simulator

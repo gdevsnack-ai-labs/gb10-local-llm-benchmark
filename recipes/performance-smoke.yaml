@@ -1,0 +1,9 @@
+name: Performance Smoke
+suite: performance
+config:
+  model_path: /models/CHANGE_ME.gguf
+  prompt_tokens: [512, 2048]
+  gen_tokens: [128]
+  repetitions: 3
+  n_gpu_layers: 99
+  flash_attn: true

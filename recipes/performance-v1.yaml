@@ -1,0 +1,16 @@
+name: Performance Benchmark v1
+suite: performance
+version: 1
+description: Reproducible llama-bench PP/TG benchmark with five repetitions per condition
+config:
+  model_path: /models/CHANGE_ME.gguf
+  prompt_tokens: [512, 2048, 8192, 32768]
+  gen_tokens: [512]
+  repetitions: 5
+  n_gpu_layers: 999
+  batch_size: 2048
+  ubatch_size: 512
+  flash_attn: true
+  threads: 20
+  cache_type_k: f16
+  cache_type_v: f16

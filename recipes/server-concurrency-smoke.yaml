@@ -1,0 +1,9 @@
+name: Server Concurrency Smoke
+suite: server-performance
+config:
+  server_url: ""
+  concurrency: 4
+  requests: 8
+  gen_tokens: 128
+  cache_prompt: false
+  prompt: "Explain why reproducible benchmark methodology matters. "

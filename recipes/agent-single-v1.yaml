@@ -1,0 +1,9 @@
+name: Agent Single Benchmark v1
+suite: agent-single
+version: 1
+description: Reproducible 12-task single-agent multi-step tool benchmark
+config:
+  dataset: datasets/agent-single-v1/agent-single-v1.jsonl
+  dataset_version: 1
+  max_steps: 6
+  save_trace: true

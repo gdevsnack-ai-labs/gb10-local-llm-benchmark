@@ -1,0 +1,19 @@
+{
+  "release_id": "gb10-llm-benchmark-v1-20260906",
+  "schema_version": "gb10-benchmark-public-v1",
+  "sha256": "52f19d49e23d5d1ce67cb6fbea55e96e6561b74e3023a0ede6d59d8b5124bd0d",
+  "counts": {
+    "models": 18,
+    "suites": 7,
+    "revalidated_evaluator_runs": 72,
+    "reused_source_runs": 54,
+    "source_run_references": 126
+  },
+  "raw_runs_public": false,
+  "generated_from": [
+    "results-public/models/summary-20260906.json",
+    "results-public/methodology.json",
+    "runs/full-cycles/*/manifest.json",
+    "runs/<source-run-id>/manifest.json + result.json"
+  ]
+}

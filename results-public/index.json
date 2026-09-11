@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-06",
+  "hardware_reference": "NVIDIA DGX Spark GB10",
+  "canonical_evaluator": "results-public/methodology.json",
+  "files": [
+    "methodology.json",
+    "schema.json",
+    "models/summary-20260906.json",
+    "releases/gb10-local-llm-benchmark.json",
+    "releases/gb10-local-llm-benchmark.manifest.json",
+    "releases/gb10-llm-benchmark-v1-20260906.json",
+    "releases/gb10-llm-benchmark-v1-20260906.manifest.json"
+  ],
+  "raw_runs_included": false,
+  "primary_release": "releases/gb10-local-llm-benchmark.json",
+  "primary_release_schema": "gb10-benchmark-public-v1"
+}

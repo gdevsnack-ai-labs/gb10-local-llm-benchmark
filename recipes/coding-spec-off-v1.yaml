@@ -1,0 +1,9 @@
+name: Coding Spec OFF v1
+suite: coding
+version: 1
+description: Coding benchmark without speculative - baseline for spec comparison
+config:
+  spec_type: none
+  dataset: data/coding/sample-v1.jsonl
+  sandbox: process
+  timeout_s: 300

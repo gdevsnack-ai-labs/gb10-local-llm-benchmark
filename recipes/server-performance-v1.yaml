@@ -1,0 +1,24 @@
+name: Server Performance Benchmark v1
+suite: server-performance
+version: 1
+description: Reproducible llama-server concurrent request benchmark with four concurrency levels and three repetitions
+config:
+  concurrencies: [1, 2, 4, 8]
+  requests_per_concurrency: 4
+  repetitions: 3
+  gen_tokens: 512
+  prompt: "Explain why reproducible benchmark methodology matters. Compare aggregate throughput with per-request performance, and list three controls that should remain fixed when comparing models."
+  cache_prompt: false
+  ctx_size: 8192
+  n_gpu_layers: 999
+  batch_size: 2048
+  ubatch_size: 512
+  flash_attn: true
+  threads: 20
+  parallel: 8
+  cache_type_k: f16
+  cache_type_v: f16
+  spec_type: mtp
+  spec_draft_n_max: 3
+  thinking_mode: auto
+  request_timeout_s: 300

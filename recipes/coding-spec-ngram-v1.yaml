@@ -1,0 +1,9 @@
+name: Coding Spec Ngram v1
+suite: coding
+version: 1
+description: Coding benchmark with ngram speculative (free) - compare to spec-off
+config:
+  spec_type: ngram-simple
+  dataset: data/coding/sample-v1.jsonl
+  sandbox: process
+  timeout_s: 300

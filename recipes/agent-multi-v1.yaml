@@ -1,0 +1,9 @@
+name: Agent Multi Benchmark v1
+suite: agent-multi
+version: 1
+description: Reproducible 10-task multi-agent role and handoff benchmark
+config:
+  dataset: datasets/agent-multi-v1/agent-multi-v1.jsonl
+  dataset_version: 1
+  max_steps: 8
+  save_trace: true

@@ -1,0 +1,23 @@
+{
+  "purpose": "Public-ready staging manifest",
+  "source_policy": "Assembled from the canonical local benchmark repository by explicit tracked-file allowlist; raw evidence is not copied.",
+  "included_top_level_paths": [
+    "backend/",
+    "frontend/",
+    "data/",
+    "recipes/",
+    "datasets/",
+    "docs/public/",
+    "docs/methodology/selected-public-docs",
+    "results-public/",
+    "scripts/export_public_release.py",
+    "scripts/test_current_projection.py",
+    "scripts/test_public_release.py",
+    ".env.example",
+    "README.md",
+    "LICENSE"
+  ],
+  "raw_evidence_public": false,
+  "release_id": "gb10-local-llm-benchmark",
+  "projection_sha256": "7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738"
+}
