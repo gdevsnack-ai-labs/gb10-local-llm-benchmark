@@ -4,6 +4,6 @@ version: 1
 description: 3-tool deterministic test (calculator/kv/file)
 config:
   dataset: data/tool/sample-v1.jsonl
-  server_url: http://127.0.0.1:8099
+  server_url: ""
   managed: true
   model_path: /path/to/model.gguf
