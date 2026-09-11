@@ -27,7 +27,7 @@ Values are `aggregate tokens/s / p50 seconds`; failure rate is shown separately.
 
 Failure rate: NVFP4 non-MTP 0%, NVFP4 MTP draft 1.04% (one request), Q4_0 non-MTP 0%, Q4_0 MTP draft 0%. The NVFP4 MTP result is retained as observed; it was not rescored or rerun.
 
-Raw evidence, `resolved-config.yaml`, `environment.json`, `events.jsonl`, `llama-server.log`, `result.json`, and request samples are preserved under each run directory. Machine-readable index: [manifest](../runs/full-cycles/gemma4-qat-mtp-compare-20260905-212404-213513/manifest.json).
+Raw evidence, `resolved-config.yaml`, `environment.json`, `events.jsonl`, `llama-server.log`, `result.json`, and request samples are preserved under each run directory. The machine-readable index is retained in canonical local evidence and is not distributed here.
 
 ## Other v1 suite results (original non-MTP full runs)
 

@@ -18,7 +18,7 @@
 | agent-single | `20260905-232905-7eaa17` | completed |
 | agent-multi | `20260905-233252-2e154c` | completed |
 
-All run directories preserve `manifest.json`, `recipe.yaml`, `resolved-config.yaml`, `environment.json`, `events.jsonl`, suite result, and raw evidence. See the [cycle manifest](../runs/full-cycles/qwen38-flash-next-iq4xs-v1-full-20260905-223427-233252/manifest.json).
+All run directories preserve `manifest.json`, `recipe.yaml`, `resolved-config.yaml`, `environment.json`, `events.jsonl`, suite result, and raw evidence. The cycle manifest is retained in canonical local evidence and is not distributed here.
 
 ## Results
 

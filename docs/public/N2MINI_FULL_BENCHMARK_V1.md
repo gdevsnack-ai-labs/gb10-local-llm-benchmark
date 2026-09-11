@@ -17,7 +17,7 @@ This is a new sequential full-cycle run using the existing v1 recipes and scorin
 | Q5_K_M | `20260905-154830-2ed4f8` | `20260905-155211-86727c` **failed** | `20260905-155223-0a2ebc` | `20260905-155244-eaa71f` | `20260905-155415-83958b` | `20260905-155457-902dfa` | `20260905-155538-390e8e` |
 | Q6_K | `20260905-155619-88ff7e` | `20260905-160021-b40dc1` **failed** | `20260905-160032-42773f` | `20260905-160053-23c1f9` | `20260905-160235-6e14ca` | `20260905-160316-a313e5` | `20260905-160358-d4338d` |
 
-Every run directory contains `manifest.json`, `recipe.yaml`, `resolved-config.yaml`, `environment.json`, `events.jsonl`, and suite-specific `result.json`/raw evidence where applicable. The complete machine-readable index is [the cycle manifest](../runs/full-cycles/n2mini-v1-full-20260905-063010-070449/manifest.json).
+Every run directory contains `manifest.json`, `recipe.yaml`, `resolved-config.yaml`, `environment.json`, `events.jsonl`, and suite-specific `result.json`/raw evidence where applicable. The complete machine-readable index is retained in canonical local evidence and is not distributed here.
 
 ## Performance
 

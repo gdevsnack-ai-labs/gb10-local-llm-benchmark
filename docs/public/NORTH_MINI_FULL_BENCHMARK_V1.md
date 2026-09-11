@@ -15,7 +15,7 @@
 | UD-Q5_K_M | `20260905-191515-5b2b06` | `20260905-191832-4bd7c6` | `20260905-192752-53edd7` | `20260905-192841-b07e97` | `20260905-193033-247745` | `20260905-193158-342e65` | `20260905-193345-cd84bc` |
 | UD-Q6_K_XL | `20260905-193540-0c3ce7` | `20260905-193918-79dcd0` | `20260905-194946-63547e` | `20260905-195043-f17e76` | `20260905-195301-12c124` | `20260905-195446-9a8b70` | `20260905-195711-74cf2f` |
 
-Full machine-readable index: [cycle manifest](../runs/full-cycles/north-mini-v1-full-20260905-183924-195711/manifest.json). Each run directory preserves recipe, resolved config, environment, events, result, and raw suite evidence.
+Full machine-readable indexes are retained in canonical local evidence and are not distributed here. Each run directory preserves recipe, resolved config, environment, events, result, and raw suite evidence.
 
 ## Performance (tokens/s: PP512 / PP2K / PP8K / PP32K / TG512)
 

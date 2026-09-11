@@ -1,12 +1,12 @@
 # GB10 Local LLM Benchmark
 
-A local-first benchmark platform for comparing local LLM models on an NVIDIA DGX Spark GB10 using `llama.cpp` and GGUF model variants.
+A reproducible local LLM benchmark for NVIDIA DGX Spark GB10 systems using `llama.cpp` and GGUF model variants.
 
-This repository is the **public-ready source and result staging** for the benchmark. It contains benchmark code, canonical fixed datasets, methodology, and sanitized public result projections. Raw runs, model files, prompts/responses, agent traces, environment snapshots, and private machine evidence are intentionally not included.
+This repository contains the benchmark source code, canonical fixed datasets, public methodology, and sanitized result projections. It does not include raw runs, model weights, prompts or responses, agent traces, environment snapshots, or machine-specific evidence.
 
 ## What is measured
 
-The current benchmark contract contains seven suites:
+The benchmark defines seven suites:
 
 1. **Performance** — prompt processing and token generation
 2. **Server-performance** — concurrency, throughput, and latency
@@ -18,7 +18,9 @@ The current benchmark contract contains seven suites:
 
 The canonical comparison condition uses `llama.cpp` with reasoning **OFF** unless a recipe explicitly defines another experiment. Server-performance MTP and non-MTP conditions remain separate variants.
 
-## Current public release
+## Current benchmark projection
+
+The current projection is the latest sanitized benchmark view used by DevSnack. Historical immutable releases remain versioned separately and are not silently overwritten.
 
 - Release ID: `gb10-local-llm-benchmark`
 - Model variants: **23**
@@ -27,43 +29,48 @@ The canonical comparison condition uses `llama.cpp` with reasoning **OFF** unles
 - Reused source runs: **57**
 - Fresh full-cycle runs: **28**
 - Source run references: **161**
-- Raw runs public: **false**
+- Raw runs included: **false**
 - Projection SHA-256: `7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738`
 
-Machine-readable release files:
+Machine-readable files:
 
 - [`results-public/releases/gb10-local-llm-benchmark.json`](results-public/releases/gb10-local-llm-benchmark.json)
 - [`results-public/releases/gb10-local-llm-benchmark.manifest.json`](results-public/releases/gb10-local-llm-benchmark.manifest.json)
 - [`results-public/methodology.json`](results-public/methodology.json)
 - [`results-public/schema.json`](results-public/schema.json)
+- [Historical immutable release](results-public/releases/gb10-llm-benchmark-v1-20260906.json)
 
-## DevSnack links
+## Where to view the benchmark
 
-- [DevSnack Standard Benchmark](https://devsnack-blog.vercel.app/benchmarks)
-- [DevSnack benchmark Story](https://devsnack-blog.vercel.app/devsnack/dgx-spark-gb10-local-llm-benchmark)
-- [Current machine-readable JSON](https://devsnack-blog.vercel.app/data/benchmarks/gb10-local-llm-benchmark.json)
+GitHub is the source and evidence boundary for the project: source code, methodology, fixed datasets, schemas, manifests, and sanitized public result data are maintained here.
 
-DevSnack serves the sanitized projection and manifest as static public data. It does not read raw runs or private benchmark evidence at runtime.
+DevSnack provides the presentation layer:
+
+- [Benchmark Hub](https://devsnack-blog.vercel.app/benchmarks) — human-readable model and suite comparison
+- [Benchmark Story](https://devsnack-blog.vercel.app/devsnack/dgx-spark-gb10-local-llm-benchmark) — editorial explanation and context
+- [Machine-readable JSON](https://devsnack-blog.vercel.app/data/benchmarks/gb10-local-llm-benchmark.json) — the current sanitized projection
+
+DevSnack presents the projection and manifest as static public data. It does not read raw runs or machine-specific evidence at runtime.
 
 ## Repository layout
 
 ```text
 backend/             FastAPI benchmark control plane and runners
 frontend/            React/Vite local control UI
-data/                Small synthetic compatibility fixtures only
+data/                Small synthetic compatibility fixtures
 recipes/             Versioned suite and execution recipes
 datasets/            Canonical fixed datasets and hashes
-docs/methodology/    Public suite definitions and platform design
+docs/methodology/    Suite definitions and platform design
 docs/public/         Public result analyses and interpretation guides
 results-public/      Sanitized JSON projections, manifests, and schema
 scripts/             Public release validation and historical exporter
 ```
 
-The public allowlist and exclusion contract are documented in [`PUBLIC_RELEASE_ALLOWLIST.md`](PUBLIC_RELEASE_ALLOWLIST.md). Dataset and result immutability rules are in [`BENCHMARK_INTEGRITY.md`](BENCHMARK_INTEGRITY.md).
+The reviewed file boundary is documented in [`PUBLIC_RELEASE_ALLOWLIST.md`](PUBLIC_RELEASE_ALLOWLIST.md). Dataset and result immutability rules are in [`BENCHMARK_INTEGRITY.md`](BENCHMARK_INTEGRITY.md).
 
 ## Local reproduction
 
-The platform is intended to run on a compatible local machine with Python, Node.js, `llama.cpp`, and the required model files supplied by the operator.
+The platform can be run on a compatible local machine with Python, Node.js, `llama.cpp`, and model files supplied separately by the user.
 
 ### Backend
 
@@ -72,8 +79,8 @@ python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e backend
 
-# Configure model/tool locations and any local API settings in your environment.
-# Keep generated runs outside Git-tracked public files.
+# Configure model paths, server settings, and local API settings in your environment.
+# Keep generated runs outside Git-tracked files.
 uvicorn app.main:app
 ```
 
@@ -86,7 +93,7 @@ npm ci
 npm run dev
 ```
 
-Run recipes through the backend control plane or the local CLI after configuring model paths, server settings, and dataset locations for your own machine. No model weights are distributed in this repository.
+Run recipes through the backend control plane or the local CLI after configuring model paths, server settings, and dataset locations for your machine. Model weights are not distributed in this repository.
 
 ## Methodology and datasets
 
@@ -100,7 +107,7 @@ Scores are fixed-harness observations under stated conditions. They are not univ
 
 ## Evidence boundary
 
-Raw run directories, raw prompts and responses, agent traces, screenshots, generated workspaces, local environment snapshots, model files, logs, and private execution records stay outside this public-ready repository. A new benchmark result or dataset revision must receive a new version or release identity rather than silently overwriting an immutable public release.
+Raw run directories, raw prompts and responses, agent traces, screenshots, generated workspaces, local environment snapshots, model files, logs, and machine-specific execution records are not distributed here. A new benchmark result or dataset revision must receive a new version or release identity rather than silently overwriting an immutable public release.
 
 ## License
 

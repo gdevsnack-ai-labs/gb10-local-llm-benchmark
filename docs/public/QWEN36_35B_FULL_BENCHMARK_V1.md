@@ -9,7 +9,7 @@ All runs completed without interruption. Existing recipes and scoring were used.
 
 ## Run index and evidence
 
-Each run directory contains the resolved recipe/config, environment, events, and suite-specific result/raw evidence: [cycle manifest](../runs/full-cycles/qwen36-35b-v1-full-20260905-172506-182855/manifest.json).
+Each run directory contains the resolved recipe/config, environment, events, and suite-specific result/raw evidence. The cycle manifest is retained in canonical local evidence and is not distributed here.
 
 | Model | performance | server-performance | knowledge | coding | tool-call | agent-single | agent-multi |
 |---|---|---|---|---|---|---|---|

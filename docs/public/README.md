@@ -1,7 +1,9 @@
-# Public release notes
+# Public benchmark documentation
 
-공개 문서에는 benchmark 목적·방법·해석 가이드와 요약 결과만 포함합니다. 내부 handoff, raw audit, 개인 장비 기록은 `private/`에 보존되며 public release 대상이 아닙니다.
+This directory contains the public result analyses, interpretation guidance, and benchmark summaries. It is intended to help readers understand the measurements without access to the canonical local run evidence.
 
-결과는 고정 harness와 고정 dataset에서의 비교 지표입니다. 점수는 모델의 모든 실제 사용성, 안전성, 제품 적합성을 대변하지 않으며, suite·recipe·reasoning mode·runtime 조건을 함께 확인해야 합니다.
+Results are fixed-harness comparison observations under stated datasets, recipes, reasoning modes, and runtime conditions. They do not represent every aspect of model quality, safety, or product suitability.
 
-공개 결과의 machine-readable 형태는 [`results-public/`](../../results-public/)에 있고, 원본 raw run은 로컬 `runs/`에만 있습니다.
+The machine-readable public data is in [`results-public/`](../../results-public/). Raw runs, prompts, responses, traces, environment files, and machine-specific evidence are not distributed in this repository.
+
+The current methodology and interpretation guides are maintained in English. A small number of historical release notes retain their original language to preserve the contemporaneous record and release identity.
