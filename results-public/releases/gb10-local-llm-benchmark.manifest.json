@@ -1,16 +1,17 @@
 {
   "release_id": "gb10-local-llm-benchmark",
   "schema_version": "gb10-benchmark-public-v1",
-  "sha256": "7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738",
-  "generated_at": "2026-09-10",
-  "updated_at": "2026-09-10",
+  "sha256": "79a87494564558b620b125a08d53b0ae4b7f9bb9f736e419f9e0b46bb4f707c1",
+  "generated_at": "2026-09-16",
+  "updated_at": "2026-09-16",
   "counts": {
     "models": 23,
-    "suites": 7,
+    "suites": 8,
     "revalidated_evaluator_runs": 76,
     "reused_source_runs": 57,
     "fresh_full_cycle_runs": 28,
-    "source_run_references": 161
+    "source_run_references": 169,
+    "external_evaluator_runs": 8
   },
   "raw_runs_public": false,
   "generated_from": [
@@ -19,6 +20,7 @@
     "docs/public/N25_MINI_FULL_BENCHMARK_V1.md",
     "runs/full-cycles/ling30-flash-mxfp4-v1-full-20260907-183412-190139/manifest.json",
     "runs/full-cycles/n25-mini-v1-full-20260910-174334-184806/manifest.json",
-    "runs/<source-run-id>/manifest.json + result.json"
+    "runs/<source-run-id>/manifest.json + result.json",
+    "tool-eval-bench-results/*/result.json"
   ]
 }

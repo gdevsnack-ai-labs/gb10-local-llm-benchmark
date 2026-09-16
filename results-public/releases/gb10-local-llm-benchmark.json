@@ -1,8 +1,8 @@
 {
   "schema_version": "gb10-benchmark-public-v1",
   "release_id": "gb10-local-llm-benchmark",
-  "generated_at": "2026-09-10",
-  "updated_at": "2026-09-10",
+  "generated_at": "2026-09-16",
+  "updated_at": "2026-09-16",
   "title": "DGX Spark GB10 로컬 LLM 벤치마크 — 모델·양자화별 성능 비교",
   "status": "current",
   "scope": {
@@ -11,11 +11,12 @@
     "reasoning_mode": "off",
     "raw_runs_public": false,
     "model_variant_count": 23,
-    "suite_count": 7,
+    "suite_count": 8,
     "revalidated_evaluator_runs": 76,
     "reused_source_runs": 57,
-    "source_run_references": 161,
-    "fresh_full_cycle_runs": 28
+    "source_run_references": 169,
+    "fresh_full_cycle_runs": 28,
+    "external_evaluator_runs": 8
   },
   "suite_versions": {
     "performance": "existing-v1",
@@ -24,7 +25,8 @@
     "coding": "existing-v1",
     "tool_call": "1.1",
     "agent_single": "1.1",
-    "agent_multi": "1.1"
+    "agent_multi": "1.1",
+    "external_tool_eval": "2.6.1.dev66+g32862e97a"
   },
   "methodology": {
     "evaluator_versions": {
@@ -34,7 +36,8 @@
       "coding": "existing-v1",
       "tool_call": "1.1",
       "agent_single": "1.1",
-      "agent_multi": "1.1"
+      "agent_multi": "1.1",
+      "external_tool_eval": "2.6.1.dev66+g32862e97a"
     },
     "datasets": [
       {
@@ -93,8 +96,20 @@
       "Raw runs, raw prompts/responses, and local model artifacts are not public.",
       "Server-performance 조건은 모델의 embedded/native MTP 지원 여부에 따라 MTP와 non-MTP가 섞일 수 있으며, matrix는 이를 별도 필터로 노출합니다.",
       "이 페이지는 최신 상태 projection이며, source run과 raw evidence는 benchmark repository에 immutable하게 보존됩니다.",
-      "N2.5 Mini full-cycle은 네 variant 모두 non-MTP·reasoning OFF 조건으로 측정했습니다."
-    ]
+      "N2.5 Mini full-cycle은 네 variant 모두 non-MTP·reasoning OFF 조건으로 측정했습니다.",
+      "External tool-eval-bench is available for 8 N2/N2.5 Mini variants; other model variants remain unmeasured in this lane.",
+      "External tool-eval-bench attempted 69 scenarios, but four common llama.cpp structured-output grammar failures were excluded; scores use 65 scored scenarios.",
+      "External tool-eval-bench uses a different 69-scenario mock-tool protocol from the internal Tool-call v1.1 suite, so the two columns are complementary rather than interchangeable."
+    ],
+    "external_tool_eval": {
+      "name": "tool-eval-bench",
+      "version": "2.6.1.dev66+g32862e97a",
+      "repository": "https://github.com/SeraphimSerapis/tool-eval-bench",
+      "research_note": "https://gdevsnack-ai-labs.github.io/devsnack-research-notes/notes/tool-eval-bench.html",
+      "protocol": "Standard 69 scenarios; deterministic mock tools; temperature 0; no-think; sequential execution.",
+      "scoring": "PASS=2, PARTIAL=1, FAIL=0; four llama.cpp grammar transport failures excluded from the 65-scenario score denominator.",
+      "relationship": "Separate external protocol from the internal Tool-call v1.1 suite; scores must not be merged."
+    }
   },
   "source_policy": {
     "revalidated_lane": "Knowledge 1.2, Tool-call 1.1, Agent-single 1.1, Agent-multi 1.1",
@@ -102,7 +117,9 @@
     "source_run_id_semantics": "Each suite points to the exact local run used for this public projection.",
     "projection_semantics": "Latest current projection; update this dataset when new model variants or conditions are measured.",
     "historical_release": "gb10-llm-benchmark-v1-20260906 remains preserved as historical source data.",
-    "fresh_full_cycle": "N2.5 Mini Q4_K_M, Q5_K_M, Q6_K, Q8_0 full-cycle runs from n25-mini-v1-full-20260910-174334-184806."
+    "fresh_full_cycle": "N2.5 Mini Q4_K_M, Q5_K_M, Q6_K, Q8_0 full-cycle runs from n25-mini-v1-full-20260910-174334-184806.",
+    "external_tool_eval_lane": "Fresh local tool-eval-bench runs for 8 N2/N2.5 Mini variants; raw traces remain local and are not public.",
+    "external_tool_eval_reference": "https://gdevsnack-ai-labs.github.io/devsnack-research-notes/notes/tool-eval-bench.html"
   },
   "model_families": {
     "ornith-1-5": {
@@ -141,7 +158,7 @@
         "n2-mini-q5-k-m",
         "n2-mini-q6-k"
       ],
-      "last_updated": "2026-09-06"
+      "last_updated": "2026-09-16"
     },
     "gemma4": {
       "slug": "gemma4",
@@ -204,7 +221,7 @@
         "n2-5-mini-q6-k",
         "n2-5-mini-q8-0"
       ],
-      "last_updated": "2026-09-10"
+      "last_updated": "2026-09-16"
     }
   },
   "models": [
@@ -220,7 +237,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -673,6 +691,10 @@
           "failure_types": {
             "missing_required_step": 2
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -696,7 +718,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -1148,6 +1171,10 @@
             "final_answer_error": 1,
             "missing_required_step": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -1171,7 +1198,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -1623,6 +1651,10 @@
           "failure_types": {
             "repeated_loop": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -1646,7 +1678,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -2089,6 +2122,10 @@
           "failure_types": {
             "tool_error": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -2112,7 +2149,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -2552,6 +2590,10 @@
           "failure_types": {
             "tool_error": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -2575,7 +2617,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -3017,6 +3060,10 @@
           "failure_types": {
             "tool_error": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -3040,7 +3087,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -3483,6 +3531,10 @@
             "tool_error": 1,
             "wrong_tool": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -3506,7 +3558,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -3950,6 +4003,40 @@
             "tool_error": 3,
             "missing_required_step": 2
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-47-27.875392Z_8664bbca",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 85,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 110,
+          "max_points": 130,
+          "passed": 50,
+          "partial": 10,
+          "failed": 5,
+          "completion_rate": 94.2,
+          "deployability": 85,
+          "responsiveness": 86,
+          "median_turn_ms": 885.5,
+          "worst_category": "E Error Recovery (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 3,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -3973,7 +4060,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -4417,6 +4505,40 @@
           "failure_types": {
             "missing_required_step": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-51-35.071439Z_0ed02394",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 85,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 111,
+          "max_points": 130,
+          "passed": 50,
+          "partial": 11,
+          "failed": 4,
+          "completion_rate": 94.2,
+          "deployability": 85,
+          "responsiveness": 85,
+          "median_turn_ms": 925.9,
+          "worst_category": "E Error Recovery (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 1,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -4440,7 +4562,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -4884,6 +5007,40 @@
             "tool_error": 3,
             "missing_required_step": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-55-41.291841Z_82bad8ea",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 82,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 107,
+          "max_points": 130,
+          "passed": 48,
+          "partial": 11,
+          "failed": 6,
+          "completion_rate": 94.2,
+          "deployability": 84,
+          "responsiveness": 88,
+          "median_turn_ms": 818.5,
+          "worst_category": "E Error Recovery (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -4907,7 +5064,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -5350,6 +5508,40 @@
           "failure_types": {
             "missing_required_step": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-59-39.694976Z_3c5a6a49",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 82,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 107,
+          "max_points": 130,
+          "passed": 48,
+          "partial": 11,
+          "failed": 6,
+          "completion_rate": 94.2,
+          "deployability": 83,
+          "responsiveness": 86,
+          "median_turn_ms": 891.5,
+          "worst_category": "E Error Recovery (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -5373,7 +5565,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -6010,6 +6203,10 @@
           "failure_types": {
             "tool_error": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -6033,7 +6230,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -6670,6 +6868,10 @@
           "failure_types": {
             "tool_error": 3
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -6693,7 +6895,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -7145,6 +7348,10 @@
             "missing_required_step": 1,
             "repeated_loop": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -7168,7 +7375,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -7622,6 +7830,10 @@
             "tool_error": 1,
             "repeated_loop": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -7645,7 +7857,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -8089,6 +8302,10 @@
           "failure_types": {
             "missing_required_step": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -8112,7 +8329,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -8555,6 +8773,10 @@
           "failure_types": {
             "tool_error": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -8578,7 +8800,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -9025,6 +9248,10 @@
             "repeated_loop": 1,
             "missing_required_step": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -9051,7 +9278,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -9523,6 +9751,10 @@
           "failure_types": {
             "missing_role": 2
           }
+        },
+        "external_tool_eval": {
+          "status": "not_in_public_export",
+          "note": "이 외부 suite는 아직 측정하지 않음"
         }
       },
       "provenance": {
@@ -9543,7 +9775,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -10006,6 +10239,40 @@
           "failure_types": {
             "tool_error": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T15-58-18.589196Z_fb4eec1e",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 88,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 115,
+          "max_points": 130,
+          "passed": 54,
+          "partial": 7,
+          "failed": 4,
+          "completion_rate": 94.2,
+          "deployability": 83,
+          "responsiveness": 72,
+          "median_turn_ms": 1616.6,
+          "worst_category": "M Autonomous Planning (33%)",
+          "worst_category_percent": 33,
+          "safety_gate_passed": true,
+          "safety_warning_count": 0,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -10029,7 +10296,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -10488,6 +10756,40 @@
           "invalid_tool_calls": 0,
           "handoffs": 11,
           "failure_types": {}
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-06-59.694883Z_9593b00e",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 90,
+          "rating": "★★★★★ Excellent",
+          "attempted": 69,
+          "scored": 65,
+          "points": 117,
+          "max_points": 130,
+          "passed": 55,
+          "partial": 7,
+          "failed": 3,
+          "completion_rate": 94.2,
+          "deployability": 85,
+          "responsiveness": 74,
+          "median_turn_ms": 1494.4,
+          "worst_category": "M Autonomous Planning (33%)",
+          "worst_category_percent": 33,
+          "safety_gate_passed": true,
+          "safety_warning_count": 0,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -10511,7 +10813,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -10971,6 +11274,40 @@
           "invalid_tool_calls": 0,
           "handoffs": 11,
           "failure_types": {}
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-13-37.913042Z_cd735d31",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 91,
+          "rating": "★★★★★ Excellent",
+          "attempted": 69,
+          "scored": 65,
+          "points": 118,
+          "max_points": 130,
+          "passed": 55,
+          "partial": 8,
+          "failed": 2,
+          "completion_rate": 94.2,
+          "deployability": 85,
+          "responsiveness": 70,
+          "median_turn_ms": 1683.3,
+          "worst_category": "M Autonomous Planning (33%)",
+          "worst_category_percent": 33,
+          "safety_gate_passed": true,
+          "safety_warning_count": 0,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -10994,7 +11331,8 @@
         "coding": "existing-v1",
         "tool_call": "1.1",
         "agent_single": "1.1",
-        "agent_multi": "1.1"
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
       },
       "suites": {
         "performance": {
@@ -11455,6 +11793,40 @@
           "failure_types": {
             "missing_role": 1
           }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-15T16-21-19.902996Z_14311faf",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 90,
+          "rating": "★★★★★ Excellent",
+          "attempted": 69,
+          "scored": 65,
+          "points": 117,
+          "max_points": 130,
+          "passed": 55,
+          "partial": 7,
+          "failed": 3,
+          "completion_rate": 94.2,
+          "deployability": 83,
+          "responsiveness": 67,
+          "median_turn_ms": 1874.4,
+          "worst_category": "M Autonomous Planning (33%)",
+          "worst_category_percent": 33,
+          "safety_gate_passed": true,
+          "safety_warning_count": 0,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400"
         }
       },
       "provenance": {
@@ -11469,10 +11841,11 @@
   ],
   "counts": {
     "models": 23,
-    "suites": 7,
+    "suites": 8,
     "revalidated_evaluator_runs": 76,
     "reused_source_runs": 57,
     "fresh_full_cycle_runs": 28,
-    "source_run_references": 161
+    "source_run_references": 169,
+    "external_evaluator_runs": 8
   }
 }

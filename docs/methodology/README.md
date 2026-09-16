@@ -1,7 +1,7 @@
 # Benchmark methodology
 
-This directory documents the measurement definitions, scoring rules, artifact contracts, and limitations for the seven benchmark suites.
+이 디렉터리는 8개 suite의 측정 정의, scoring, artifact contract, 제한사항을 보관합니다.
 
-The canonical evaluator combines the established Performance, Server-performance, and Coding versions with Knowledge v1.2, Tool-call v1.1, Agent-single v1.1, and Agent-multi v1.1. Model comparisons use reasoning OFF by default. Server-performance records MTP and non-MTP as separate conditions.
+Canonical evaluator는 Performance·Server-performance·Coding의 기존 정식 버전과 Knowledge v1.2, Tool-call v1.1, External tool-eval-bench `2.6.1.dev66+g32862e97a`, Agent-single v1.1, Agent-multi v1.1의 조합입니다. 모델 비교는 reasoning OFF를 기준으로 하며, Server-performance는 MTP와 non-MTP를 별도 실행 조건으로 기록합니다. External tool-eval-bench는 내부 Tool-call suite와 다른 69-scenario protocol이며, 현재 N2/N2.5 Mini 8개 variant만 측정했습니다.
 
-Fixed dataset hashes and the public result schema are recorded in [`results-public/methodology.json`](../../results-public/methodology.json).
+고정 dataset의 hash와 공개 결과 schema는 [`results-public/methodology.json`](../../results-public/methodology.json)을 참조하세요.

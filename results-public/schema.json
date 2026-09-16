@@ -15,6 +15,7 @@
     "knowledge": {"type": "object"},
     "coding": {"type": "object"},
     "tool_call": {"type": "object"},
+    "external_tool_eval": {"type": "object"},
     "agent_single": {"type": "object"},
     "agent_multi": {"type": "object"},
     "source_runs": {"type": "object", "additionalProperties": {"type": ["string", "null"]}}

@@ -24,16 +24,18 @@ def main() -> int:
 
     assert projection["release_id"] == "gb10-local-llm-benchmark"
     assert projection["scope"]["model_variant_count"] == len(projection["models"]) == 23
-    assert projection["scope"]["suite_count"] == 7
-    assert projection["scope"]["source_run_references"] == 161
+    assert projection["scope"]["suite_count"] == 8
+    assert projection["scope"]["source_run_references"] == 169
+    assert projection["scope"]["external_evaluator_runs"] == 8
     assert projection["scope"]["fresh_full_cycle_runs"] == 28
     assert projection["counts"] == {
         "models": 23,
-        "suites": 7,
+        "suites": 8,
         "revalidated_evaluator_runs": 76,
         "reused_source_runs": 57,
         "fresh_full_cycle_runs": 28,
-        "source_run_references": 161,
+        "source_run_references": 169,
+        "external_evaluator_runs": 8,
     }
 
     model_ids = {model["model_id"] for model in projection["models"]}
@@ -45,7 +47,7 @@ def main() -> int:
     assert ling["suites"]["knowledge"]["source_run_id"] == "20260907-185311-238e8f"
     assert ling["suites"]["server_performance"]["condition"]["spec_type"] == "mtp"
     assert ling["suites"]["agent_multi"]["source_run_id"] == "20260907-190139-b1c4e0"
-    assert len(ling["suites"]) == 7
+    assert len(ling["suites"]) == 8
 
     n25 = next(model for model in projection["models"] if model["model_family_slug"] == "n2-5-mini")
     assert n25["model"] == "N2.5 Mini"
@@ -53,7 +55,12 @@ def main() -> int:
     assert n25["suites"]["tool_call"]["source_run_id"] == "20260910-175508-09d7a2"
     assert n25["suites"]["tool_call"]["source_type"] == "fresh_full_cycle"
     assert n25["suites"]["server_performance"]["condition"]["spec_type"] == "none"
-    assert len(n25["suites"]) == 7
+    assert len(n25["suites"]) == 8
+    available_external = [model for model in projection["models"] if model["suites"]["external_tool_eval"]["status"] == "available"]
+    assert len(available_external) == 8
+    n25_q6 = next(model for model in projection["models"] if model["model_id"] == "n2-5-mini-q6-k")
+    assert n25_q6["suites"]["external_tool_eval"]["source_run_id"] == "2026-09-15T16-13-37.913042Z_cd735d31"
+    assert n25_q6["suites"]["external_tool_eval"]["score"] == 91
 
     text = encoded.decode("utf-8")
     leaked = [marker for marker in PRIVATE_MARKERS if marker in text]

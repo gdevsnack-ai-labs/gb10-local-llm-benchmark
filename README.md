@@ -6,15 +6,16 @@ This repository contains the benchmark source code, canonical fixed datasets, pu
 
 ## What is measured
 
-The benchmark defines seven suites:
+The benchmark defines eight suites:
 
 1. **Performance** — prompt processing and token generation
 2. **Server-performance** — concurrency, throughput, and latency
 3. **Knowledge** — fixed question-answer accuracy
 4. **Coding** — generated code and test outcomes
 5. **Tool-call** — tool selection, arguments, execution, and recovery
-6. **Agent-single** — single-agent completion and tool behavior
-7. **Agent-multi** — role participation, handoff, and completion
+6. **External tool-eval-bench** — 69 deterministic external tool-use scenarios, trace, and safety
+7. **Agent-single** — single-agent completion and tool behavior
+8. **Agent-multi** — role participation, handoff, and completion
 
 The canonical comparison condition uses `llama.cpp` with reasoning **OFF** unless a recipe explicitly defines another experiment. Server-performance MTP and non-MTP conditions remain separate variants.
 
@@ -24,13 +25,15 @@ The current projection is the latest sanitized benchmark view used by DevSnack. 
 
 - Release ID: `gb10-local-llm-benchmark`
 - Model variants: **23**
-- Suites: **7**
+- Suites: **8**
 - Revalidated evaluator runs: **76**
 - Reused source runs: **57**
 - Fresh full-cycle runs: **28**
-- Source run references: **161**
+- Source run references: **169**
+- External tool-eval evaluator runs: **8**
 - Raw runs included: **false**
-- Projection SHA-256: `7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738`
+- Projection updated: **2026-09-16**
+- Projection SHA-256: `79a87494564558b620b125a08d53b0ae4b7f9bb9f736e419f9e0b46bb4f707c1`
 
 Machine-readable files:
 
@@ -66,7 +69,7 @@ results-public/      Sanitized JSON projections, manifests, and schema
 scripts/             Public release validation and historical exporter
 ```
 
-The reviewed file boundary is documented in [`PUBLIC_RELEASE_ALLOWLIST.md`](PUBLIC_RELEASE_ALLOWLIST.md). Dataset and result immutability rules are in [`BENCHMARK_INTEGRITY.md`](BENCHMARK_INTEGRITY.md).
+The reviewed file boundary is documented in [`PUBLIC_RELEASE_ALLOWLIST.md`](PUBLIC_RELEASE_ALLOWLIST.md). Dataset and result immutability rules are in [`BENCHMARK_INTEGRITY.md`](BENCHMARK_INTEGRITY.md). External tool-eval-bench is a separate protocol from the internal Tool-call v1.1 suite; its numbers are shown as a separate lane and are not merged.
 
 ## Local reproduction
 
