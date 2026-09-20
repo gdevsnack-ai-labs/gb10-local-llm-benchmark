@@ -1,7 +1,7 @@
 {
   "release_id": "gb10-local-llm-benchmark",
   "schema_version": "gb10-benchmark-public-v1",
-  "sha256": "bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72",
+  "sha256": "96e742cecc408f408a6b6f9ce19fd91db2463390a3afa0b49398a01db1b11927",
   "generated_at": "2026-09-18",
   "updated_at": "2026-09-18",
   "counts": {

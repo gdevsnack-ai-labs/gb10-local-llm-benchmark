@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "results-public/releases/gb10-local-llm-benchmark.json"
 MANIFEST = ROOT / "results-public/releases/gb10-local-llm-benchmark.manifest.json"
-EXPECTED_SHA256 = "bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72"
+EXPECTED_SHA256 = "96e742cecc408f408a6b6f9ce19fd91db2463390a3afa0b49398a01db1b11927"
 EXPECTED_SUITES = {
     "performance", "server_performance", "knowledge", "coding",
     "tool_call", "external_tool_eval", "agent_single", "agent_multi",

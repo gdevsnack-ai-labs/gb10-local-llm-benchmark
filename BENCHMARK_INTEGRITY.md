@@ -13,7 +13,7 @@ The current public projection is identified by:
 - Fresh full-cycle runs: 91
 - Source run references: 241
 - Raw runs public: `false`
-- Projection SHA-256: `bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72`
+- Projection SHA-256: `96e742cecc408f408a6b6f9ce19fd91db2463390a3afa0b49398a01db1b11927`
 
 The release manifest records the projection hash and reconciled counts. The JSON projection and manifest are the public numeric source of truth.
 

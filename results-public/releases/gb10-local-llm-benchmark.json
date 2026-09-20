@@ -100,6 +100,7 @@
       "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
       "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
       "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
+      "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
       "External tool-eval-bench is available for 17 variants: 8 N2/N2.5 Mini variants, four Occamy 1.0 variants, one Laguna S 2.1 variant, and four Laguna XS 2.1 variants; other model variants remain unmeasured in this lane.",
       "External tool-eval-bench runs attempted 69 scenarios each. Existing N2/N2.5 Mini and Occamy 1.0 runs exclude four common llama.cpp structured-output grammar failures and score 65 scenarios; Laguna S 2.1 and Laguna XS 2.1 runs had no excluded scenarios and score all 69.",
       "External tool-eval-bench uses a different 69-scenario mock-tool protocol from the internal Tool-call v1.1 suite, so the two columns are complementary rather than interchangeable.",
@@ -12171,7 +12172,7 @@
           "source_run_id": "20260917-125510-132b45",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 900,
             "spec_type": "none",
@@ -12683,7 +12684,7 @@
           "source_run_id": "20260917-123416-b02194",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 300,
             "spec_type": "none",
@@ -13195,7 +13196,7 @@
           "source_run_id": "20260917-123538-9c0cca",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 300,
             "spec_type": "none",
@@ -13706,7 +13707,7 @@
           "source_run_id": "20260917-123706-5fbff5",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 300,
             "spec_type": "none",
@@ -14217,7 +14218,7 @@
           "source_run_id": "20260917-123859-9637d9",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 300,
             "spec_type": "none",
@@ -14729,7 +14730,7 @@
           "source_run_id": "20260918-130854-b87fe7",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 900,
             "spec_type": "none",
@@ -15248,7 +15249,7 @@
           "source_run_id": "20260918-132503-ec4307",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 900,
             "spec_type": "none",
@@ -15766,7 +15767,7 @@
           "source_run_id": "20260918-134303-749b5c",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 900,
             "spec_type": "none",
@@ -16281,7 +16282,7 @@
           "source_run_id": "20260918-140212-bd7c3f",
           "evaluator_version": "1.2",
           "condition": {
-            "dataset_version": "legacy v1",
+            "dataset_version": 1.2,
             "max_tokens": 128,
             "request_timeout_s": 900,
             "spec_type": "none",

@@ -33,7 +33,7 @@ The current projection is the latest sanitized benchmark view used by DevSnack. 
 - External tool-eval evaluator runs: **17**
 - Raw runs included: **false**
 - Projection updated: **2026-09-18**
-- Projection SHA-256: `bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72`
+- Projection SHA-256: `96e742cecc408f408a6b6f9ce19fd91db2463390a3afa0b49398a01db1b11927`
 
 Machine-readable files:
 
