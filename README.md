@@ -24,16 +24,16 @@ The canonical comparison condition uses `llama.cpp` with reasoning **OFF** unles
 The current projection is the latest sanitized benchmark view used by DevSnack. Historical immutable releases remain versioned separately and are not silently overwritten.
 
 - Release ID: `gb10-local-llm-benchmark`
-- Model variants: **23**
+- Model variants: **32**
 - Suites: **8**
 - Revalidated evaluator runs: **76**
 - Reused source runs: **57**
-- Fresh full-cycle runs: **28**
-- Source run references: **169**
-- External tool-eval evaluator runs: **8**
+- Fresh full-cycle runs: **91**
+- Source run references: **241**
+- External tool-eval evaluator runs: **17**
 - Raw runs included: **false**
-- Projection updated: **2026-09-16**
-- Projection SHA-256: `79a87494564558b620b125a08d53b0ae4b7f9bb9f736e419f9e0b46bb4f707c1`
+- Projection updated: **2026-09-18**
+- Projection SHA-256: `bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72`
 
 Machine-readable files:
 

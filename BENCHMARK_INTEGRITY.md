@@ -6,14 +6,14 @@ The current public projection is identified by:
 
 - Release ID: `gb10-local-llm-benchmark`
 - Schema: `gb10-benchmark-public-v1`
-- Model variants: 23
-- Suites: 7
+- Model variants: 32
+- Suites: 8
 - Revalidated evaluator runs: 76
 - Reused source runs: 57
-- Fresh full-cycle runs: 28
-- Source run references: 161
+- Fresh full-cycle runs: 91
+- Source run references: 241
 - Raw runs public: `false`
-- Projection SHA-256: `7065e2b970ae63a1c024e659f38f69d876215978539f6653df3fe6483a199738`
+- Projection SHA-256: `bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72`
 
 The release manifest records the projection hash and reconciled counts. The JSON projection and manifest are the public numeric source of truth.
 

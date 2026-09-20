@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "results-public/releases/gb10-local-llm-benchmark.json"
 MANIFEST = ROOT / "results-public/releases/gb10-local-llm-benchmark.manifest.json"
-EXPECTED_SHA256 = "79a87494564558b620b125a08d53b0ae4b7f9bb9f736e419f9e0b46bb4f707c1"
+EXPECTED_SHA256 = "bed9f442c3d6f8c30ab8f760da8fa63116d0bb08e128a35655b20cdeaa5dbd72"
 EXPECTED_SUITES = {
     "performance", "server_performance", "knowledge", "coding",
     "tool_call", "external_tool_eval", "agent_single", "agent_multi",
@@ -30,11 +30,11 @@ def test_current_projection_contract_and_hash():
 
     assert projection["release_id"] == "gb10-local-llm-benchmark"
     assert projection["schema_version"] == "gb10-benchmark-public-v1"
-    assert projection["scope"]["model_variant_count"] == len(projection["models"]) == 23
+    assert projection["scope"]["model_variant_count"] == len(projection["models"]) == 32
     assert projection["scope"]["suite_count"] == 8
     assert set(projection["suite_versions"]) == EXPECTED_SUITES
-    assert projection["scope"]["source_run_references"] == 169
-    assert projection["scope"]["external_evaluator_runs"] == 8
+    assert projection["scope"]["source_run_references"] == 241
+    assert projection["scope"]["external_evaluator_runs"] == 17
     assert projection["scope"]["raw_runs_public"] is False
     assert manifest["sha256"] == EXPECTED_SHA256
     assert hashlib.sha256(encoded).hexdigest() == EXPECTED_SHA256

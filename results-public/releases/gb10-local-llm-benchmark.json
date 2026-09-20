@@ -1,8 +1,8 @@
 {
   "schema_version": "gb10-benchmark-public-v1",
   "release_id": "gb10-local-llm-benchmark",
-  "generated_at": "2026-09-16",
-  "updated_at": "2026-09-16",
+  "generated_at": "2026-09-18",
+  "updated_at": "2026-09-18",
   "title": "DGX Spark GB10 로컬 LLM 벤치마크 — 모델·양자화별 성능 비교",
   "status": "current",
   "scope": {
@@ -10,13 +10,13 @@
     "runtime": "llama.cpp",
     "reasoning_mode": "off",
     "raw_runs_public": false,
-    "model_variant_count": 23,
+    "model_variant_count": 32,
     "suite_count": 8,
     "revalidated_evaluator_runs": 76,
     "reused_source_runs": 57,
-    "source_run_references": 169,
-    "fresh_full_cycle_runs": 28,
-    "external_evaluator_runs": 8
+    "source_run_references": 241,
+    "fresh_full_cycle_runs": 91,
+    "external_evaluator_runs": 17
   },
   "suite_versions": {
     "performance": "existing-v1",
@@ -97,9 +97,13 @@
       "Server-performance 조건은 모델의 embedded/native MTP 지원 여부에 따라 MTP와 non-MTP가 섞일 수 있으며, matrix는 이를 별도 필터로 노출합니다.",
       "이 페이지는 최신 상태 projection이며, source run과 raw evidence는 benchmark repository에 immutable하게 보존됩니다.",
       "N2.5 Mini full-cycle은 네 variant 모두 non-MTP·reasoning OFF 조건으로 측정했습니다.",
-      "External tool-eval-bench is available for 8 N2/N2.5 Mini variants; other model variants remain unmeasured in this lane.",
-      "External tool-eval-bench attempted 69 scenarios, but four common llama.cpp structured-output grammar failures were excluded; scores use 65 scored scenarios.",
-      "External tool-eval-bench uses a different 69-scenario mock-tool protocol from the internal Tool-call v1.1 suite, so the two columns are complementary rather than interchangeable."
+      "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
+      "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
+      "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다.",
+      "External tool-eval-bench is available for 17 variants: 8 N2/N2.5 Mini variants, four Occamy 1.0 variants, one Laguna S 2.1 variant, and four Laguna XS 2.1 variants; other model variants remain unmeasured in this lane.",
+      "External tool-eval-bench runs attempted 69 scenarios each. Existing N2/N2.5 Mini and Occamy 1.0 runs exclude four common llama.cpp structured-output grammar failures and score 65 scenarios; Laguna S 2.1 and Laguna XS 2.1 runs had no excluded scenarios and score all 69.",
+      "External tool-eval-bench uses a different 69-scenario mock-tool protocol from the internal Tool-call v1.1 suite, so the two columns are complementary rather than interchangeable.",
+      "Laguna S 2.1의 이전 Knowledge v1·25문항 결과는 historical custom record이며 current Knowledge v1.2·100문항과 섞지 않습니다."
     ],
     "external_tool_eval": {
       "name": "tool-eval-bench",
@@ -107,7 +111,7 @@
       "repository": "https://github.com/SeraphimSerapis/tool-eval-bench",
       "research_note": "https://gdevsnack-ai-labs.github.io/devsnack-research-notes/notes/tool-eval-bench.html",
       "protocol": "Standard 69 scenarios; deterministic mock tools; temperature 0; no-think; sequential execution.",
-      "scoring": "PASS=2, PARTIAL=1, FAIL=0; four llama.cpp grammar transport failures excluded from the 65-scenario score denominator.",
+      "scoring": "PASS=2, PARTIAL=1, FAIL=0; each run records its own scored denominator. Existing N2/N2.5 Mini and Occamy 1.0 runs exclude four llama.cpp grammar transport failures and score 65 scenarios; Laguna S 2.1 and Laguna XS 2.1 runs score all 69 scenarios.",
       "relationship": "Separate external protocol from the internal Tool-call v1.1 suite; scores must not be merged."
     }
   },
@@ -117,8 +121,8 @@
     "source_run_id_semantics": "Each suite points to the exact local run used for this public projection.",
     "projection_semantics": "Latest current projection; update this dataset when new model variants or conditions are measured.",
     "historical_release": "gb10-llm-benchmark-v1-20260906 remains preserved as historical source data.",
-    "fresh_full_cycle": "N2.5 Mini Q4_K_M, Q5_K_M, Q6_K, Q8_0 full-cycle runs from n25-mini-v1-full-20260910-174334-184806.",
-    "external_tool_eval_lane": "Fresh local tool-eval-bench runs for 8 N2/N2.5 Mini variants; raw traces remain local and are not public.",
+    "fresh_full_cycle": "N2.5 Mini four-variant full-cycle runs plus Laguna S 2.1 seven-suite full-cycle runs, Laguna XS 2.1 four-variant seven-suite runs, and Occamy 1.0 four-variant seven-suite runs; the previous legacy Laguna S Knowledge v1 result remains historical only.",
+    "external_tool_eval_lane": "Fresh local tool-eval-bench runs for 17 variants: 8 N2/N2.5 Mini variants, four Occamy 1.0 variants, one Laguna S 2.1 variant, and four Laguna XS 2.1 variants; raw traces remain local and are not public.",
     "external_tool_eval_reference": "https://gdevsnack-ai-labs.github.io/devsnack-research-notes/notes/tool-eval-bench.html"
   },
   "model_families": {
@@ -158,7 +162,7 @@
         "n2-mini-q5-k-m",
         "n2-mini-q6-k"
       ],
-      "last_updated": "2026-09-16"
+      "last_updated": "2026-09-18"
     },
     "gemma4": {
       "slug": "gemma4",
@@ -221,7 +225,43 @@
         "n2-5-mini-q6-k",
         "n2-5-mini-q8-0"
       ],
+      "last_updated": "2026-09-18"
+    },
+    "laguna-s-2-1": {
+      "slug": "laguna-s-2-1",
+      "name": "Laguna S 2.1",
+      "summary": "Laguna S 2.1 APEX-I Balanced (NVFP4)의 GB10 canonical 7-suite 및 external tool-eval 측정 결과입니다. 이전 legacy Knowledge v1 결과와 현재 Knowledge v1.2 결과를 구분해 기록합니다.",
+      "variant_count": 1,
+      "model_ids": [
+        "laguna-s-2-1-apex-i-balanced"
+      ],
       "last_updated": "2026-09-16"
+    },
+    "laguna-xs-2-1": {
+      "slug": "laguna-xs-2-1",
+      "name": "Laguna XS 2.1",
+      "summary": "Laguna XS 2.1의 Q4_K_M·Q5_K_M·Q6_K_L·Q8_0 variant별 GB10 canonical 7-suite 및 external tool-eval 측정 결과입니다.",
+      "variant_count": 4,
+      "model_ids": [
+        "laguna-xs-2-1-q4-k-m",
+        "laguna-xs-2-1-q5-k-m",
+        "laguna-xs-2-1-q6-k-l",
+        "laguna-xs-2-1-q8-0"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    "occamy-1-0": {
+      "slug": "occamy-1-0",
+      "name": "Occamy 1.0",
+      "summary": "Occamy 1.0의 Q4_K_M·Q5_K_M·Q6_K·Q8_0 variant별 GB10 canonical 7-suite 및 external tool-eval 측정 결과입니다.",
+      "variant_count": 4,
+      "model_ids": [
+        "occamy-1-0-q4-k-m",
+        "occamy-1-0-q5-k-m",
+        "occamy-1-0-q6-k",
+        "occamy-1-0-q8-0"
+      ],
+      "last_updated": "2026-09-18"
     }
   },
   "models": [
@@ -11837,15 +11877,4641 @@
       "model_family_slug": "n2-5-mini",
       "mtp_mode": "non-mtp",
       "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "laguna-s-2-1-apex-i-balanced",
+      "model": "Laguna S 2.1",
+      "variant": "APEX-I Balanced",
+      "quantization": "NVFP4",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-221140-0f8a31",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 300.0,
+            "thinking_budget": -1,
+            "thinking_mode": "auto",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 702.167413,
+              "stddev_tps": 7.160883,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 27.552132,
+              "stddev_tps": 0.029755,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 762.483309,
+              "stddev_tps": 11.741522,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 757.700286,
+              "stddev_tps": 2.088559,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 756.944537,
+              "stddev_tps": 1.860929,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 702.167413,
+              "stddev_tps": 7.160883,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-222052-4e614c",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 26.811204987162228,
+                "stddev": 0.31919914893348106,
+                "min": 26.442705398049746,
+                "max": 27.002098297189008
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 26.830401461782788,
+                "stddev": 0.5190986033944522,
+                "min": 25.191336161796023,
+                "max": 27.08509066049112
+              },
+              "latency_p50_s": {
+                "mean": 7.789764949164237,
+                "stddev": 0.009899188448116785,
+                "min": 7.783438819496951,
+                "max": 7.801172951505578
+              },
+              "latency_p95_s": {
+                "mean": 8.1833367766616,
+                "stddev": 0.6773628683011375,
+                "min": 7.786084836845111,
+                "max": 8.965455357994506
+              },
+              "latency_p99_s": {
+                "mean": 8.238468930261007,
+                "stddev": 0.7712071288194385,
+                "min": 7.78632248256501,
+                "max": 9.128946494792327
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 37.441556429808735,
+                "stddev": 0.6065017084337836,
+                "min": 36.88330524366916,
+                "max": 38.08689375427638
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 18.857920163351697,
+                "stddev": 0.41301666037962564,
+                "min": 18.093481058945056,
+                "max": 19.398556804466423
+              },
+              "latency_p50_s": {
+                "mean": 11.726596593170447,
+                "stddev": 0.6277959146244522,
+                "min": 11.155289761001768,
+                "max": 12.39868769900204
+              },
+              "latency_p95_s": {
+                "mean": 12.725401704932786,
+                "stddev": 0.9995966620721547,
+                "min": 11.605196335249639,
+                "max": 13.526436816246132
+              },
+              "latency_p99_s": {
+                "mean": 12.904474279920056,
+                "stddev": 1.124606641269339,
+                "min": 11.60664323105273,
+                "max": 13.591678497646352
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 59.08860577657398,
+                "stddev": 0.63190915876646,
+                "min": 58.47921332718255,
+                "max": 59.74085029561376
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 14.92412665382118,
+                "stddev": 0.8540662164709819,
+                "min": 14.141192804367128,
+                "max": 16.679413593462062
+              },
+              "latency_p50_s": {
+                "mean": 14.327107227334636,
+                "stddev": 0.2314984723646179,
+                "min": 14.176340919497306,
+                "max": 14.593654402509856
+              },
+              "latency_p95_s": {
+                "mean": 15.363236489583263,
+                "stddev": 0.20344818474429302,
+                "min": 15.128852229248878,
+                "max": 15.494182810252823
+              },
+              "latency_p99_s": {
+                "mean": 15.37870208538637,
+                "stddev": 0.17730599064869623,
+                "min": 15.17459158824713,
+                "max": 15.494599047653901
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 72.8797906924781,
+                "stddev": 0.0351462208318861,
+                "min": 72.8392092683136,
+                "max": 72.90042469503453
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 10.352916282006621,
+                "stddev": 3.422848337483395,
+                "min": 6.89555608911679,
+                "max": 16.106564196982493
+              },
+              "latency_p50_s": {
+                "mean": 24.254775339000236,
+                "stddev": 0.09106380269954838,
+                "min": 24.183355761502753,
+                "max": 24.35732111449761
+              },
+              "latency_p95_s": {
+                "mean": 31.106470287100578,
+                "stddev": 0.2064939176827885,
+                "min": 30.86873773894258,
+                "max": 31.24121625575208
+              },
+              "latency_p99_s": {
+                "mean": 34.49728880582654,
+                "stddev": 0.2359922189437777,
+                "min": 34.22479237823224,
+                "max": 34.634801975458544
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-125510-132b45",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 88,
+          "accuracy": 0.88,
+          "pass_rate": 0.88,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "math": {
+              "total": 20,
+              "correct": 16,
+              "accuracy": 0.8,
+              "pass_rate": 0.8
+            },
+            "science": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "logic": {
+              "total": 20,
+              "correct": 14,
+              "accuracy": 0.7,
+              "pass_rate": 0.7
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-223837-fd9942",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 11,
+          "pass_rate": 0.9166666666666666,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 2,
+              "pass_rate": 0.6666666666666666
+            }
+          },
+          "failure_types": {
+            "syntax_error": 1
+          }
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-224113-615e16",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 13,
+          "pass_rate": 0.8666666666666667,
+          "tool_selection_accuracy": 0.9333333333333333,
+          "argument_accuracy": 0.9333333333333333,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 0.9333333333333333,
+          "args_rate": 0.9333333333333333,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "execution_error": 1,
+            "incomplete_sequence": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-224159-014f47",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 6,
+          "correct": 6,
+          "pass_rate": 0.5,
+          "avg_steps": 3.1666666666666665,
+          "avg_tool_calls": 2.1666666666666665,
+          "tool_calls_total": 26,
+          "failed_tool_calls": 4,
+          "repeated_tool_calls": 1,
+          "failure_types": {
+            "missing_required_step": 6
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260916-224310-e629eb",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 8,
+            "request_timeout_s": 300.0,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 7,
+          "correct": 7,
+          "pass_rate": 0.7,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.1,
+          "avg_tool_calls": 2.1,
+          "tool_calls_total": 21,
+          "failed_tool_calls": 0,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "missing_required_step": 3
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-16T13-50-35.288763Z_6e36b02a",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 86,
+          "rating": "★★★ Adequate (safety-capped)",
+          "attempted": 69,
+          "scored": 69,
+          "points": 119,
+          "max_points": 138,
+          "passed": 56,
+          "partial": 7,
+          "failed": 6,
+          "deployability": 73,
+          "responsiveness": 42,
+          "median_turn_ms": 3744.5,
+          "worst_category": "K Safety & Boundaries (65%)",
+          "worst_category_percent": 65,
+          "safety_gate_passed": false,
+          "safety_warning_count": 3,
+          "excluded_count": 0
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "laguna-s-2-1",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "laguna-xs-2-1-q4-k-m",
+      "model": "Laguna XS 2.1",
+      "variant": "Q4_K_M",
+      "quantization": "Q4_K_M",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-104854-f33a4c",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1915.657661,
+              "stddev_tps": 5.602625,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 84.231392,
+              "stddev_tps": 0.077162,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2374.616585,
+              "stddev_tps": 76.174729,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 2340.126337,
+              "stddev_tps": 19.050207,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 2261.719572,
+              "stddev_tps": 8.65441,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1915.657661,
+              "stddev_tps": 5.602625,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105200-b488e2",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 79.21741516799882,
+                "stddev": 1.4533649479921025,
+                "min": 77.58600374645195,
+                "max": 80.37391737565405
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 79.31361831478736,
+                "stddev": 2.369132326704727,
+                "min": 72.22795803174986,
+                "max": 81.42738133473645
+              },
+              "latency_p50_s": {
+                "mean": 2.2786566586679933,
+                "stddev": 0.017977615095468906,
+                "min": 2.2597529209961067,
+                "max": 2.2955369304982014
+              },
+              "latency_p95_s": {
+                "mean": 2.412811995316588,
+                "stddev": 0.19716630995633316,
+                "min": 2.298486533545656,
+                "max": 2.6404793313449773
+              },
+              "latency_p99_s": {
+                "mean": 2.4304379235967644,
+                "stddev": 0.22299011011185071,
+                "min": 2.3013072395056953,
+                "max": 2.687924335065327
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 122.55441972425587,
+                "stddev": 3.3624677891493877,
+                "min": 119.94041047253073,
+                "max": 126.34766777283245
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 64.9671650281965,
+                "stddev": 5.653361976688126,
+                "min": 60.006805929923466,
+                "max": 74.95454808966375
+              },
+              "latency_p50_s": {
+                "mean": 3.111034605833993,
+                "stddev": 0.3923291013256648,
+                "min": 2.842137221006851,
+                "max": 3.5612249189944123
+              },
+              "latency_p95_s": {
+                "mean": 5.459154458166208,
+                "stddev": 0.5371658356217587,
+                "min": 4.972412882550271,
+                "max": 6.035480368902791
+              },
+              "latency_p99_s": {
+                "mean": 5.942069268167009,
+                "stddev": 0.31929638727842247,
+                "min": 5.585751210107118,
+                "max": 6.20225429340775
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 233.3339972981524,
+                "stddev": 4.429189521781377,
+                "min": 230.43665637769604,
+                "max": 238.43256933415557
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 60.15611132093683,
+                "stddev": 3.6891000435049484,
+                "min": 55.557046750098706,
+                "max": 65.52047578142532
+              },
+              "latency_p50_s": {
+                "mean": 5.881124097000186,
+                "stddev": 0.8963674390119127,
+                "min": 4.846098820504267,
+                "max": 6.402710244998161
+              },
+              "latency_p95_s": {
+                "mean": 6.806707787083724,
+                "stddev": 0.2277048824331484,
+                "min": 6.543804235250718,
+                "max": 6.941446705997805
+              },
+              "latency_p99_s": {
+                "mean": 6.80706746728174,
+                "stddev": 0.2276896841046219,
+                "min": 6.544184549447527,
+                "max": 6.941976040400914
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 283.0243239278137,
+                "stddev": 90.77552771844509,
+                "min": 223.92394901588835,
+                "max": 387.54487683916545
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 38.70162769539556,
+                "stddev": 9.949996431261189,
+                "min": 24.070397630615027,
+                "max": 49.18833914330036
+              },
+              "latency_p50_s": {
+                "mean": 7.308338044332534,
+                "stddev": 1.2217637227478286,
+                "min": 5.897641174502496,
+                "max": 8.026230414492602
+              },
+              "latency_p95_s": {
+                "mean": 12.20842502139785,
+                "stddev": 4.550527011692127,
+                "min": 6.959980620448914,
+                "max": 15.050980938348948
+              },
+              "latency_p99_s": {
+                "mean": 13.012469827171639,
+                "stddev": 5.2459548938119855,
+                "min": 6.9600770216409,
+                "max": 16.254185935717544
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-123416-b02194",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 300,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 85,
+          "accuracy": 0.85,
+          "pass_rate": 0.85,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 18,
+              "accuracy": 0.9,
+              "pass_rate": 0.9
+            },
+            "math": {
+              "total": 20,
+              "correct": 14,
+              "accuracy": 0.7,
+              "pass_rate": 0.7
+            },
+            "science": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "logic": {
+              "total": 20,
+              "correct": 14,
+              "accuracy": 0.7,
+              "pass_rate": 0.7
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105623-0dad69",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105709-f69f66",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 13,
+          "pass_rate": 0.8666666666666667,
+          "tool_selection_accuracy": 1.0,
+          "argument_accuracy": 1.0,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 1.0,
+          "args_rate": 1.0,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "execution_error": 1,
+            "final_answer_error": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105735-3f0345",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 6,
+          "correct": 6,
+          "pass_rate": 0.5,
+          "avg_steps": 3.25,
+          "avg_tool_calls": 2.25,
+          "tool_calls_total": 27,
+          "failed_tool_calls": 4,
+          "repeated_tool_calls": 2,
+          "failure_types": {
+            "missing_required_step": 3,
+            "tool_error": 2,
+            "final_answer_error": 1
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105805-7056d3",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.9,
+          "avg_tool_calls": 2.9,
+          "tool_calls_total": 29,
+          "failed_tool_calls": 5,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "tool_error": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-17T02-37-34.608963Z_7ccb1b11",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 86,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 69,
+          "points": 119,
+          "max_points": 138,
+          "passed": 54,
+          "partial": 11,
+          "failed": 4,
+          "deployability": 85,
+          "responsiveness": 83,
+          "median_turn_ms": 1058.7,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 0
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "laguna-xs-2-1",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "laguna-xs-2-1-q5-k-m",
+      "model": "Laguna XS 2.1",
+      "variant": "Q5_K_M",
+      "quantization": "Q5_K_M",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-105836-06d7c0",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1838.066355,
+              "stddev_tps": 3.290879,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 76.83563,
+              "stddev_tps": 0.044154,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2239.873337,
+              "stddev_tps": 42.017023,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 2226.148728,
+              "stddev_tps": 8.29206,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 2144.640229,
+              "stddev_tps": 6.901331,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1838.066355,
+              "stddev_tps": 3.290879,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110153-a4dde2",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 72.34416970976557,
+                "stddev": 1.0963829399586562,
+                "min": 71.12453221698992,
+                "max": 73.24795927221228
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 72.48680257268717,
+                "stddev": 1.66650502890209,
+                "min": 67.31436227642797,
+                "max": 73.4955631699267
+              },
+              "latency_p50_s": {
+                "mean": 2.824954338665217,
+                "stddev": 0.011716839508840268,
+                "min": 2.8122546704980778,
+                "max": 2.8353443645028165
+              },
+              "latency_p95_s": {
+                "mean": 3.176447466015331,
+                "stddev": 0.5923272062672373,
+                "min": 2.8207211621542227,
+                "max": 3.860221298639954
+              },
+              "latency_p99_s": {
+                "mean": 3.225095992135563,
+                "stddev": 0.6752507200597317,
+                "min": 2.821218595634564,
+                "max": 4.004638206119708
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 120.99301431958258,
+                "stddev": 14.287910467913555,
+                "min": 109.1993518612931,
+                "max": 136.88116827918017
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 61.69150620581309,
+                "stddev": 6.644588564453816,
+                "min": 53.901799775813465,
+                "max": 69.22073957853331
+              },
+              "latency_p50_s": {
+                "mean": 2.5540988038337673,
+                "stddev": 0.23872470628496711,
+                "min": 2.3447512710044975,
+                "max": 2.814077731993166
+              },
+              "latency_p95_s": {
+                "mean": 3.042507205417254,
+                "stddev": 0.6037990689116947,
+                "min": 2.391271112252434,
+                "max": 3.5837452391024276
+              },
+              "latency_p99_s": {
+                "mean": 3.1643978250846945,
+                "stddev": 0.7667488168946586,
+                "min": 2.3912977416531067,
+                "max": 3.9246334886243854
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 202.90797900853957,
+                "stddev": 25.91815382520386,
+                "min": 173.66645925137482,
+                "max": 223.04696681150463
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 52.47273729654102,
+                "stddev": 6.848884017846204,
+                "min": 42.61478963924314,
+                "max": 62.14886806024914
+              },
+              "latency_p50_s": {
+                "mean": 3.3350180663352753,
+                "stddev": 0.35756183788813606,
+                "min": 3.078919543499069,
+                "max": 3.7435323485042318
+              },
+              "latency_p95_s": {
+                "mean": 6.127971337744384,
+                "stddev": 2.057572589196898,
+                "min": 3.9832377189959516,
+                "max": 8.085602648989152
+              },
+              "latency_p99_s": {
+                "mean": 6.128465139548644,
+                "stddev": 2.0576875933827425,
+                "min": 3.9835312102004536,
+                "max": 8.086099919390836
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 283.87134394776643,
+                "stddev": 68.29674014717239,
+                "min": 229.9273610137753,
+                "max": 360.6628069459148
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 38.356733888290435,
+                "stddev": 7.885211204628452,
+                "min": 23.936194680539565,
+                "max": 46.09116870695193
+              },
+              "latency_p50_s": {
+                "mean": 5.258040088665439,
+                "stddev": 0.5974651175090158,
+                "min": 4.570119682997756,
+                "max": 5.647152293000545
+              },
+              "latency_p95_s": {
+                "mean": 8.139613877581482,
+                "stddev": 2.316998995089867,
+                "min": 5.560633872800099,
+                "max": 10.04565148109541
+              },
+              "latency_p99_s": {
+                "mean": 8.422087276312183,
+                "stddev": 2.5243505016265932,
+                "min": 5.5616867116764475,
+                "max": 10.338010640680004
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-123538-9c0cca",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 300,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 88,
+          "accuracy": 0.88,
+          "pass_rate": 0.88,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "math": {
+              "total": 20,
+              "correct": 16,
+              "accuracy": 0.8,
+              "pass_rate": 0.8
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 13,
+              "accuracy": 0.65,
+              "pass_rate": 0.65
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110520-ec7fd1",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110616-1b77b2",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 13,
+          "pass_rate": 0.8666666666666667,
+          "tool_selection_accuracy": 1.0,
+          "argument_accuracy": 1.0,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 1.0,
+          "args_rate": 1.0,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "execution_error": 1,
+            "final_answer_error": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110642-139202",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 6,
+          "correct": 6,
+          "pass_rate": 0.5,
+          "avg_steps": 3.1666666666666665,
+          "avg_tool_calls": 2.1666666666666665,
+          "tool_calls_total": 26,
+          "failed_tool_calls": 4,
+          "repeated_tool_calls": 2,
+          "failure_types": {
+            "missing_required_step": 3,
+            "tool_error": 3
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110718-fc3466",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.8,
+          "avg_tool_calls": 2.8,
+          "tool_calls_total": 28,
+          "failed_tool_calls": 4,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "tool_error": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-17T02-42-27.709494Z_1ebf1d9d",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 88,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 69,
+          "points": 121,
+          "max_points": 138,
+          "passed": 56,
+          "partial": 9,
+          "failed": 4,
+          "deployability": 86,
+          "responsiveness": 80,
+          "median_turn_ms": 1189.1,
+          "worst_category": "O Structured Output (58%)",
+          "worst_category_percent": 58,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 0
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "laguna-xs-2-1",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "laguna-xs-2-1-q6-k-l",
+      "model": "Laguna XS 2.1",
+      "variant": "Q6_K_L",
+      "quantization": "Q6_K_L",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-110749-7d96a2",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1675.317827,
+              "stddev_tps": 3.121688,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 68.228573,
+              "stddev_tps": 0.038769,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2021.653826,
+              "stddev_tps": 49.449028,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 1997.405534,
+              "stddev_tps": 9.700918,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 1934.774467,
+              "stddev_tps": 9.32141,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1675.317827,
+              "stddev_tps": 3.121688,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111130-0dd975",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 64.64074707779774,
+                "stddev": 1.1546214496781366,
+                "min": 63.329191305895506,
+                "max": 65.50392984543996
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 64.75615881217281,
+                "stddev": 1.0688546523003315,
+                "min": 62.00624138984059,
+                "max": 65.71858947631102
+              },
+              "latency_p50_s": {
+                "mean": 2.170677544665523,
+                "stddev": 0.026604581693229434,
+                "min": 2.150577540494851,
+                "max": 2.2008470930013573
+              },
+              "latency_p95_s": {
+                "mean": 2.7897010192442395,
+                "stddev": 1.0644282022372982,
+                "min": 2.161170014696836,
+                "max": 4.018689966040984
+              },
+              "latency_p99_s": {
+                "mean": 2.876477463043848,
+                "stddev": 1.2106939850862555,
+                "min": 2.162343439737742,
+                "max": 4.2743563563986395
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 108.16155052675842,
+                "stddev": 12.862381747004124,
+                "min": 93.66825187290456,
+                "max": 118.21873090729665
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 54.895881549821205,
+                "stddev": 5.42110220292181,
+                "min": 46.70063997357977,
+                "max": 59.5745891798981
+              },
+              "latency_p50_s": {
+                "mean": 4.410045411833077,
+                "stddev": 0.28176441333434105,
+                "min": 4.0851048460026504,
+                "max": 4.58670745749987
+              },
+              "latency_p95_s": {
+                "mean": 5.154472228915741,
+                "stddev": 0.9873032903743205,
+                "min": 4.569050676797633,
+                "max": 6.294371881153348
+              },
+              "latency_p99_s": {
+                "mean": 5.246265324717387,
+                "stddev": 1.1460563879760797,
+                "min": 4.5692971529607895,
+                "max": 6.569498523437214
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 189.03645871243782,
+                "stddev": 5.768743729172335,
+                "min": 185.07447570046716,
+                "max": 195.65484411721016
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 48.46378455817632,
+                "stddev": 3.9190317297687414,
+                "min": 44.22697263872573,
+                "max": 54.12810349745661
+              },
+              "latency_p50_s": {
+                "mean": 4.163156011168515,
+                "stddev": 0.3428268286590922,
+                "min": 3.9234993670033873,
+                "max": 4.555846485498478
+              },
+              "latency_p95_s": {
+                "mean": 4.932543429917132,
+                "stddev": 0.6081067497838553,
+                "min": 4.570433025997772,
+                "max": 5.634608094998839
+              },
+              "latency_p99_s": {
+                "mean": 4.932841176916554,
+                "stddev": 0.6082671307871942,
+                "min": 4.5705790035994145,
+                "max": 5.635089803803567
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 203.28729020907085,
+                "stddev": 21.597677825006997,
+                "min": 183.34233298477895,
+                "max": 226.22544267272463
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 30.076936439161084,
+                "stddev": 7.57592515681663,
+                "min": 20.254632527281323,
+                "max": 40.5858745868602
+              },
+              "latency_p50_s": {
+                "mean": 6.43647442850003,
+                "stddev": 1.58521234486054,
+                "min": 4.711088274001668,
+                "max": 7.828487958497135
+              },
+              "latency_p95_s": {
+                "mean": 11.110833588568978,
+                "stddev": 1.5713399136148296,
+                "min": 9.727951545203538,
+                "max": 12.81954402624833
+              },
+              "latency_p99_s": {
+                "mean": 12.20736773655066,
+                "stddev": 1.194365247420313,
+                "min": 11.063752172000386,
+                "max": 13.446720217429684
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-123706-5fbff5",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 300,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 88,
+          "accuracy": 0.88,
+          "pass_rate": 0.88,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 16,
+              "accuracy": 0.8,
+              "pass_rate": 0.8
+            },
+            "math": {
+              "total": 20,
+              "correct": 16,
+              "accuracy": 0.8,
+              "pass_rate": 0.8
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 16,
+              "accuracy": 0.8,
+              "pass_rate": 0.8
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111548-499578",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111649-cc8c53",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 13,
+          "pass_rate": 0.8666666666666667,
+          "tool_selection_accuracy": 0.9333333333333333,
+          "argument_accuracy": 0.9333333333333333,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 0.9333333333333333,
+          "args_rate": 0.9333333333333333,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "execution_error": 1,
+            "incomplete_sequence": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111720-3b80b7",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 5,
+          "correct": 5,
+          "pass_rate": 0.4166666666666667,
+          "avg_steps": 3.0833333333333335,
+          "avg_tool_calls": 2.0833333333333335,
+          "tool_calls_total": 25,
+          "failed_tool_calls": 4,
+          "repeated_tool_calls": 2,
+          "failure_types": {
+            "missing_required_step": 4,
+            "tool_error": 3
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111756-e42de3",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.9,
+          "avg_tool_calls": 2.9,
+          "tool_calls_total": 29,
+          "failed_tool_calls": 5,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "tool_error": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-17T02-49-05.614507Z_3c0ec91f",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 88,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 69,
+          "points": 121,
+          "max_points": 138,
+          "passed": 56,
+          "partial": 9,
+          "failed": 4,
+          "deployability": 85,
+          "responsiveness": 78,
+          "median_turn_ms": 1276.9,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 0
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "laguna-xs-2-1",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "laguna-xs-2-1-q8-0",
+      "model": "Laguna XS 2.1",
+      "variant": "Q8_0",
+      "quantization": "Q8_0",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-111837-b20780",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1704.978691,
+              "stddev_tps": 4.160007,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 65.075307,
+              "stddev_tps": 0.026019,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2072.64519,
+              "stddev_tps": 53.398903,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 2061.964251,
+              "stddev_tps": 6.682737,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 2011.474412,
+              "stddev_tps": 4.768871,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1704.978691,
+              "stddev_tps": 4.160007,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-112228-afb6ee",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 62.1477579023493,
+                "stddev": 0.4965464506771571,
+                "min": 61.57608580097616,
+                "max": 62.47169426883242
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 62.276305499651414,
+                "stddev": 0.9077161443105962,
+                "min": 59.90336873089717,
+                "max": 63.48894406507893
+              },
+              "latency_p50_s": {
+                "mean": 3.651977305834104,
+                "stddev": 0.0006996712985953335,
+                "min": 3.651176294501056,
+                "max": 3.6524690560036106
+              },
+              "latency_p95_s": {
+                "mean": 4.560474494253625,
+                "stddev": 1.5156743906995604,
+                "min": 3.6607140855514446,
+                "max": 6.310390184205607
+              },
+              "latency_p99_s": {
+                "mean": 4.68785723965358,
+                "stddev": 1.7290611767536312,
+                "min": 3.661736073109787,
+                "max": 6.684143721645815
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 87.04495148554415,
+                "stddev": 0.4422088584795308,
+                "min": 86.53929030567956,
+                "max": 87.35925363720409
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 46.84696238224771,
+                "stddev": 4.265887662540496,
+                "min": 44.15875371286086,
+                "max": 61.77247865498224
+              },
+              "latency_p50_s": {
+                "mean": 4.733010995497655,
+                "stddev": 0.010830899733880501,
+                "min": 4.723197311992408,
+                "max": 4.744631785499223
+              },
+              "latency_p95_s": {
+                "mean": 7.596556945985505,
+                "stddev": 0.043071547193243416,
+                "min": 7.556836590047898,
+                "max": 7.6423377368089875
+              },
+              "latency_p99_s": {
+                "mean": 8.758816711598822,
+                "stddev": 0.07573066668393255,
+                "min": 8.694389178812123,
+                "max": 8.842235493768529
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 156.0832792308666,
+                "stddev": 17.559974837444383,
+                "min": 135.80741998986142,
+                "max": 166.36215324071654
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 41.31965883996193,
+                "stddev": 4.370895932351366,
+                "min": 34.927453071336274,
+                "max": 54.40448159987568
+              },
+              "latency_p50_s": {
+                "mean": 5.3731262851627735,
+                "stddev": 0.42644001112628394,
+                "min": 5.122807959996862,
+                "max": 5.865513762495539
+              },
+              "latency_p95_s": {
+                "mean": 6.173899067664024,
+                "stddev": 1.1424644782517943,
+                "min": 5.507961635998072,
+                "max": 7.493083067751286
+              },
+              "latency_p99_s": {
+                "mean": 6.732743830067193,
+                "stddev": 0.6588482625966262,
+                "min": 6.349129077605175,
+                "max": 7.493507113550004
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 177.55275358936788,
+                "stddev": 19.546941233308363,
+                "min": 155.53641473645934,
+                "max": 192.8671428446097
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 24.1813251310611,
+                "stddev": 6.156790135773781,
+                "min": 18.170398257051836,
+                "max": 37.51047558124429
+              },
+              "latency_p50_s": {
+                "mean": 9.365479059502832,
+                "stddev": 0.7380686438914853,
+                "min": 8.867904632505088,
+                "max": 10.213482503000705
+              },
+              "latency_p95_s": {
+                "mean": 12.386412366083338,
+                "stddev": 2.0692087298037207,
+                "min": 11.045114664700668,
+                "max": 14.76946161524902
+              },
+              "latency_p99_s": {
+                "mean": 13.048831805683005,
+                "stddev": 2.34041144303387,
+                "min": 11.124506325423718,
+                "max": 15.654239599723516
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-123859-9637d9",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 300,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 84,
+          "accuracy": 0.84,
+          "pass_rate": 0.84,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 18,
+              "accuracy": 0.9,
+              "pass_rate": 0.9
+            },
+            "math": {
+              "total": 20,
+              "correct": 14,
+              "accuracy": 0.7,
+              "pass_rate": 0.7
+            },
+            "science": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "logic": {
+              "total": 20,
+              "correct": 13,
+              "accuracy": 0.65,
+              "pass_rate": 0.65
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-112901-c3ba40",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-113037-02056d",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "max_tokens": 512,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 13,
+          "pass_rate": 0.8666666666666667,
+          "tool_selection_accuracy": 0.8666666666666667,
+          "argument_accuracy": 0.8666666666666667,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 0.8666666666666667,
+          "args_rate": 0.8666666666666667,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "wrong_tool": 1,
+            "incomplete_sequence": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-113143-f16e74",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 5,
+          "correct": 5,
+          "pass_rate": 0.4166666666666667,
+          "avg_steps": 3.0833333333333335,
+          "avg_tool_calls": 2.0833333333333335,
+          "tool_calls_total": 25,
+          "failed_tool_calls": 4,
+          "repeated_tool_calls": 2,
+          "failure_types": {
+            "missing_required_step": 4,
+            "tool_error": 3
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260917-113259-94abe6",
+          "evaluator_version": "1.1",
+          "condition": {
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.8,
+          "avg_tool_calls": 2.8,
+          "tool_calls_total": 28,
+          "failed_tool_calls": 4,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "tool_error": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-17T02-56-37.405515Z_3c300ead",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 87,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 69,
+          "points": 120,
+          "max_points": 138,
+          "passed": 55,
+          "partial": 10,
+          "failed": 4,
+          "deployability": 84,
+          "responsiveness": 77,
+          "median_turn_ms": 1322.2,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 0
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "laguna-xs-2-1",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "occamy-1-0-q4-k-m",
+      "model": "Occamy 1.0",
+      "variant": "Q4_K_M",
+      "quantization": "Q4_K_M",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-125553-cfef21",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1953.524606,
+              "stddev_tps": 6.210044,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 80.627057,
+              "stddev_tps": 0.095314,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2168.139169,
+              "stddev_tps": 43.762731,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 2124.017001,
+              "stddev_tps": 11.339177,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 2079.053924,
+              "stddev_tps": 9.149564,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1953.524606,
+              "stddev_tps": 6.210044,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-125905-b15c83",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_draft_n_max": 3,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 76.3496034478802,
+                "stddev": 0.42100928543910815,
+                "min": 75.9736882190775,
+                "max": 76.80451541042297
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 76.35577255608129,
+                "stddev": 0.6330962701107358,
+                "min": 75.04452421670878,
+                "max": 77.107276521912
+              },
+              "latency_p50_s": {
+                "mean": 6.697751269166474,
+                "stddev": 0.03348148410523434,
+                "min": 6.66896901400105,
+                "max": 6.734496280496387
+              },
+              "latency_p95_s": {
+                "mean": 6.757001063714537,
+                "stddev": 0.06333280981035445,
+                "min": 6.685470277996865,
+                "max": 6.805940477198601
+              },
+              "latency_p99_s": {
+                "mean": 6.763634673274331,
+                "stddev": 0.06931803096362545,
+                "min": 6.685985838796551,
+                "max": 6.819281197838282
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 114.27004576814868,
+                "stddev": 0.3805548243720566,
+                "min": 113.86408516653984,
+                "max": 114.61869338446652
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 57.14727607456621,
+                "stddev": 0.6230621601983538,
+                "min": 55.638274522572075,
+                "max": 58.01233024113901
+              },
+              "latency_p50_s": {
+                "mean": 8.9438293881661,
+                "stddev": 0.03633506726093083,
+                "min": 8.902878586497536,
+                "max": 8.972211178497673
+              },
+              "latency_p95_s": {
+                "mean": 9.0882462728674,
+                "stddev": 0.10314660729988004,
+                "min": 8.991755851253037,
+                "max": 9.196959834900554
+              },
+              "latency_p99_s": {
+                "mean": 9.091001646841615,
+                "stddev": 0.10360661464544854,
+                "min": 8.995619175053362,
+                "max": 9.201230620582283
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 157.14477589785636,
+                "stddev": 2.8045480668227794,
+                "min": 154.21097814331824,
+                "max": 159.7991565268672
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 39.30277358850196,
+                "stddev": 0.7249611866808936,
+                "min": 37.79424319020861,
+                "max": 40.270568083823065
+              },
+              "latency_p50_s": {
+                "mean": 13.014970754166521,
+                "stddev": 0.2427292662167898,
+                "min": 12.777739591499994,
+                "max": 13.262847808000515
+              },
+              "latency_p95_s": {
+                "mean": 13.271648597169891,
+                "stddev": 0.28962867956420246,
+                "min": 12.969293923253645,
+                "max": 13.546604003255197
+              },
+              "latency_p99_s": {
+                "mean": 13.271844235967485,
+                "stddev": 0.2898006987580864,
+                "min": 12.96930039425315,
+                "max": 13.546950170250785
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 202.57576695642015,
+                "stddev": 2.408019437848471,
+                "min": 199.88216948793092,
+                "max": 204.5200245774238
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 25.328283232729916,
+                "stddev": 0.2937530061855844,
+                "min": 24.457630054805026,
+                "max": 25.63415489029554
+              },
+              "latency_p50_s": {
+                "mean": 20.19838081933267,
+                "stddev": 0.23312818739654573,
+                "min": 20.009687564499473,
+                "max": 20.458994982498552
+              },
+              "latency_p95_s": {
+                "mean": 20.423501264799658,
+                "stddev": 0.45132854820939133,
+                "min": 20.07326308865195,
+                "max": 20.932831922699187
+              },
+              "latency_p99_s": {
+                "mean": 20.434494413282398,
+                "stddev": 0.4466506307430766,
+                "min": 20.073408693149396,
+                "max": 20.93395671925995
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-130854-b87fe7",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 94,
+          "accuracy": 0.94,
+          "pass_rate": 0.94,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            },
+            "korea": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "math": {
+              "total": 20,
+              "correct": 17,
+              "accuracy": 0.85,
+              "pass_rate": 0.85
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 18,
+              "accuracy": 0.9,
+              "pass_rate": 0.9
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-130913-7c6987",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "dataset_version": 1,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-130935-7dfe8e",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 11,
+          "pass_rate": 0.7333333333333333,
+          "tool_selection_accuracy": 0.8666666666666667,
+          "argument_accuracy": 0.7333333333333333,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 0.8666666666666667,
+          "args_rate": 0.7333333333333333,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "wrong_arguments": 2,
+            "wrong_tool": 1,
+            "incomplete_sequence": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-130954-023380",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 8,
+          "correct": 8,
+          "pass_rate": 0.6666666666666666,
+          "avg_steps": 3.25,
+          "avg_tool_calls": 2.25,
+          "tool_calls_total": 27,
+          "failed_tool_calls": 1,
+          "repeated_tool_calls": 5,
+          "failure_types": {
+            "missing_required_step": 3,
+            "repeated_loop": 1
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-131022-821ca8",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 6,
+          "correct": 6,
+          "pass_rate": 0.6,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 4.2,
+          "avg_tool_calls": 3.3,
+          "tool_calls_total": 33,
+          "failed_tool_calls": 5,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "final_answer_error": 1,
+            "tool_error": 2,
+            "wrong_tool": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-18T05-30-01.584263Z_098ce6ed",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 87,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 113,
+          "max_points": 130,
+          "passed": 51,
+          "partial": 11,
+          "failed": 3,
+          "deployability": 85,
+          "responsiveness": 79,
+          "median_turn_ms": 1234.7,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": true,
+          "safety_warning_count": 0,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400",
+          "completion_rate": 94.2
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "occamy-1-0",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "occamy-1-0-q5-k-m",
+      "model": "Occamy 1.0",
+      "variant": "Q5_K_M",
+      "quantization": "Q5_K_M",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-131059-1770cf",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1854.728054,
+              "stddev_tps": 3.916172,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 73.712934,
+              "stddev_tps": 0.032947,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 2072.404256,
+              "stddev_tps": 38.642737,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 2037.891768,
+              "stddev_tps": 10.801426,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 2006.223637,
+              "stddev_tps": 10.769007,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1854.728054,
+              "stddev_tps": 3.916172,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-131425-5e4636",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_draft_n_max": 3,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 68.77784567984855,
+                "stddev": 0.31996531607120776,
+                "min": 68.50159892145024,
+                "max": 69.12843929189073
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 68.78308088381384,
+                "stddev": 0.5549558044652236,
+                "min": 67.56175965106524,
+                "max": 69.60285966752677
+              },
+              "latency_p50_s": {
+                "mean": 7.442561566334916,
+                "stddev": 0.029180062688096822,
+                "min": 7.409601667503011,
+                "max": 7.465100381999946
+              },
+              "latency_p95_s": {
+                "mean": 7.503294320719578,
+                "stddev": 0.05880074685443717,
+                "min": 7.447010925402355,
+                "max": 7.564324654551092
+              },
+              "latency_p99_s": {
+                "mean": 7.50972436307944,
+                "stddev": 0.06315169632041504,
+                "min": 7.449528451481965,
+                "max": 7.575466054910721
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 101.0804856514117,
+                "stddev": 0.5616091777751613,
+                "min": 100.50083972708505,
+                "max": 101.62212763662515
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 50.54890946958755,
+                "stddev": 0.46642805464369935,
+                "min": 49.80407306249669,
+                "max": 51.25557806347414
+              },
+              "latency_p50_s": {
+                "mean": 10.124577665500206,
+                "stddev": 0.06041641539931123,
+                "min": 10.067703939999774,
+                "max": 10.188002779999806
+              },
+              "latency_p95_s": {
+                "mean": 10.235313822050617,
+                "stddev": 0.05537589136773055,
+                "min": 10.1733149542506,
+                "max": 10.279862965851862
+              },
+              "latency_p99_s": {
+                "mean": 10.237253776943739,
+                "stddev": 0.05272558639678362,
+                "min": 10.178407998850526,
+                "max": 10.280199545171126
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 146.57540800358177,
+                "stddev": 5.003774565261024,
+                "min": 141.85366568223765,
+                "max": 151.82013456771531
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 36.67226214885351,
+                "stddev": 1.340060755759403,
+                "min": 34.42266376242158,
+                "max": 38.66706064806443
+              },
+              "latency_p50_s": {
+                "mean": 13.954030246665448,
+                "stddev": 0.5787957014055991,
+                "min": 13.298093658497237,
+                "max": 14.392970871500438
+              },
+              "latency_p95_s": {
+                "mean": 14.39103493508143,
+                "stddev": 0.2927409760463339,
+                "min": 14.135833340997124,
+                "max": 14.710602887749701
+              },
+              "latency_p99_s": {
+                "mean": 14.434604089680821,
+                "stddev": 0.36486637418163453,
+                "min": 14.135872643396215,
+                "max": 14.841257809548551
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 192.5456681216273,
+                "stddev": 2.2754037614650717,
+                "min": 189.9590928466294,
+                "max": 194.2385599855385
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 24.0849062255778,
+                "stddev": 0.5618145193452941,
+                "min": 22.758151969391783,
+                "max": 24.7854183394608
+              },
+              "latency_p50_s": {
+                "mean": 21.102033805667208,
+                "stddev": 0.24159552897673311,
+                "min": 20.962026935500035,
+                "max": 21.381003641999996
+              },
+              "latency_p95_s": {
+                "mean": 22.049093528016602,
+                "stddev": 0.5248367072887534,
+                "min": 21.467121194202264,
+                "max": 22.486485710250054
+              },
+              "latency_p99_s": {
+                "mean": 22.052796385210314,
+                "stddev": 0.5274613545849296,
+                "min": 21.468621529910525,
+                "max": 22.49411612975964
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132503-ec4307",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 95,
+          "accuracy": 0.95,
+          "pass_rate": 0.95,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "math": {
+              "total": 20,
+              "correct": 17,
+              "accuracy": 0.85,
+              "pass_rate": 0.85
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 18,
+              "accuracy": 0.9,
+              "pass_rate": 0.9
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132522-3ccc54",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "dataset_version": 1,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 11,
+          "pass_rate": 0.9166666666666666,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 2,
+              "pass_rate": 0.6666666666666666
+            }
+          },
+          "failure_types": {
+            "syntax_error": 1
+          }
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132541-a4ea87",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 11,
+          "pass_rate": 0.7333333333333333,
+          "tool_selection_accuracy": 0.8666666666666667,
+          "argument_accuracy": 0.7333333333333333,
+          "execution_success_rate": 0.9333333333333333,
+          "tool_rate": 0.8666666666666667,
+          "args_rate": 0.7333333333333333,
+          "exec_rate": 0.9333333333333333,
+          "failure_types": {
+            "wrong_arguments": 2,
+            "wrong_tool": 1,
+            "incomplete_sequence": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132600-2c1f3e",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.75,
+          "avg_steps": 3.25,
+          "avg_tool_calls": 2.25,
+          "tool_calls_total": 27,
+          "failed_tool_calls": 2,
+          "repeated_tool_calls": 4,
+          "failure_types": {
+            "missing_required_step": 3
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132631-11b52a",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.9,
+          "avg_tool_calls": 2.9,
+          "tool_calls_total": 29,
+          "failed_tool_calls": 5,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "tool_error": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-18T05-35-40.616071Z_33585709",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 85,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 111,
+          "max_points": 130,
+          "passed": 50,
+          "partial": 11,
+          "failed": 4,
+          "deployability": 82,
+          "responsiveness": 76,
+          "median_turn_ms": 1367.0,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400",
+          "completion_rate": 94.2
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "occamy-1-0",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "occamy-1-0-q6-k",
+      "model": "Occamy 1.0",
+      "variant": "Q6_K",
+      "quantization": "Q6_K",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-132705-4a9a1f",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1658.977434,
+              "stddev_tps": 2.92193,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 66.79336,
+              "stddev_tps": 0.02455,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 1814.856605,
+              "stddev_tps": 26.364912,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 1789.1185,
+              "stddev_tps": 12.270761,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 1753.645607,
+              "stddev_tps": 9.039322,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1658.977434,
+              "stddev_tps": 2.92193,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-133055-a5f57b",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_draft_n_max": 3,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 63.599793391609474,
+                "stddev": 0.08040363707906249,
+                "min": 63.52431102680789,
+                "max": 63.684348613661975
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 63.60441684812861,
+                "stddev": 0.4189877004689661,
+                "min": 62.8601780082151,
+                "max": 64.04905021980682
+              },
+              "latency_p50_s": {
+                "mean": 8.031877092500508,
+                "stddev": 0.007485274138550486,
+                "min": 8.023950586000865,
+                "max": 8.038824839000881
+              },
+              "latency_p95_s": {
+                "mean": 8.117598145034936,
+                "stddev": 0.02106872415362751,
+                "min": 8.093819000252916,
+                "max": 8.133938036800828
+              },
+              "latency_p99_s": {
+                "mean": 8.126995607674834,
+                "stddev": 0.02136794413826166,
+                "min": 8.102692614452899,
+                "max": 8.14283660656074
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 92.45525755189458,
+                "stddev": 0.5608586060415743,
+                "min": 91.82144372221634,
+                "max": 92.88737036047337
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 46.239792580225995,
+                "stddev": 0.5277862912756013,
+                "min": 45.50397863143449,
+                "max": 47.18593463951704
+              },
+              "latency_p50_s": {
+                "mean": 11.080928367833016,
+                "stddev": 0.07401086978492043,
+                "min": 11.003572050500225,
+                "max": 11.15106457750153
+              },
+              "latency_p95_s": {
+                "mean": 11.202216448050482,
+                "stddev": 0.03892243071786847,
+                "min": 11.170793209101612,
+                "max": 11.24575594300004
+              },
+              "latency_p99_s": {
+                "mean": 11.205649768010408,
+                "stddev": 0.03953173080953082,
+                "min": 11.176127308221549,
+                "max": 11.250561885401039
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 127.90151084685955,
+                "stddev": 1.7147793473418904,
+                "min": 126.2887798659312,
+                "max": 129.7027593944896
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 31.988898018791122,
+                "stddev": 0.566042491261443,
+                "min": 30.910264331989474,
+                "max": 32.712059085768125
+              },
+              "latency_p50_s": {
+                "mean": 15.978635204333841,
+                "stddev": 0.23363391464135505,
+                "min": 15.714553791000071,
+                "max": 16.158431135001592
+              },
+              "latency_p95_s": {
+                "mean": 16.32717853241714,
+                "stddev": 0.24478146649507898,
+                "min": 16.074740719250258,
+                "max": 16.563507970749924
+              },
+              "latency_p99_s": {
+                "mean": 16.327686806216057,
+                "stddev": 0.24490400195993844,
+                "min": 16.07498240944624,
+                "max": 16.563963233349206
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 161.19473172133382,
+                "stddev": 1.886751774944292,
+                "min": 159.7647841387908,
+                "max": 163.33317651464225
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 20.154103058158213,
+                "stddev": 0.22731483410327,
+                "min": 19.87676047925875,
+                "max": 20.680762241017444
+              },
+              "latency_p50_s": {
+                "mean": 25.395796722499654,
+                "stddev": 0.30985949987428557,
+                "min": 25.046538372000214,
+                "max": 25.637707865000266
+              },
+              "latency_p95_s": {
+                "mean": 25.61012251429929,
+                "stddev": 0.11186983149623546,
+                "min": 25.525184268797965,
+                "max": 25.736876748649593
+              },
+              "latency_p99_s": {
+                "mean": 25.61554778130669,
+                "stddev": 0.12025427800651788,
+                "min": 25.525241890881006,
+                "max": 25.75205019830064
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134303-749b5c",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 96,
+          "accuracy": 0.96,
+          "pass_rate": 0.96,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "math": {
+              "total": 20,
+              "correct": 17,
+              "accuracy": 0.85,
+              "pass_rate": 0.85
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134325-dc8355",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "dataset_version": 1,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 12,
+          "pass_rate": 1.0,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            }
+          },
+          "failure_types": {}
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134356-3854f6",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 11,
+          "pass_rate": 0.7333333333333333,
+          "tool_selection_accuracy": 0.9333333333333333,
+          "argument_accuracy": 0.8,
+          "execution_success_rate": 0.8666666666666667,
+          "tool_rate": 0.9333333333333333,
+          "args_rate": 0.8,
+          "exec_rate": 0.8666666666666667,
+          "failure_types": {
+            "wrong_arguments": 2,
+            "wrong_tool": 1,
+            "execution_error": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134418-c5681f",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 8,
+          "correct": 8,
+          "pass_rate": 0.6666666666666666,
+          "avg_steps": 3.25,
+          "avg_tool_calls": 2.25,
+          "tool_calls_total": 27,
+          "failed_tool_calls": 3,
+          "repeated_tool_calls": 4,
+          "failure_types": {
+            "missing_required_step": 3,
+            "wrong_tool": 1
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134452-50b3a6",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 10,
+          "correct": 10,
+          "pass_rate": 1.0,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 3.9,
+          "avg_tool_calls": 2.9,
+          "tool_calls_total": 29,
+          "failed_tool_calls": 5,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {}
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-18T05-40-59.894858Z_6f17533b",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 86,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 112,
+          "max_points": 130,
+          "passed": 51,
+          "partial": 10,
+          "failed": 4,
+          "deployability": 83,
+          "responsiveness": 75,
+          "median_turn_ms": 1431.3,
+          "worst_category": "M Autonomous Planning (50%)",
+          "worst_category_percent": 50,
+          "safety_gate_passed": false,
+          "safety_warning_count": 2,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400",
+          "completion_rate": 94.2
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "occamy-1-0",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
+    },
+    {
+      "model_id": "occamy-1-0-q8-0",
+      "model": "Occamy 1.0",
+      "variant": "Q8_0",
+      "quantization": "Q8_0",
+      "benchmark_versions": {
+        "performance": "existing-v1",
+        "server_performance": "existing-v1",
+        "knowledge": "1.2",
+        "coding": "existing-v1",
+        "tool_call": "1.1",
+        "agent_single": "1.1",
+        "agent_multi": "1.1",
+        "external_tool_eval": "2.6.1.dev66+g32862e97a"
+      },
+      "suites": {
+        "performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134529-c85c59",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "flash_attn": true,
+            "gen_tokens": [
+              512
+            ],
+            "n_gpu_layers": 999,
+            "prompt_tokens": [
+              512,
+              2048,
+              8192,
+              32768
+            ],
+            "repetitions": 5,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "metrics": {
+            "pp": {
+              "token_count": 32768,
+              "mean_tps": 1733.954705,
+              "stddev_tps": 4.611164,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "tg": {
+              "token_count": 512,
+              "mean_tps": 58.790811,
+              "stddev_tps": 0.032521,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "metrics_by_prompt": {
+            "512": {
+              "token_count": 512,
+              "mean_tps": 1914.195673,
+              "stddev_tps": 38.624186,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "2048": {
+              "token_count": 2048,
+              "mean_tps": 1889.061851,
+              "stddev_tps": 13.587546,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "8192": {
+              "token_count": 8192,
+              "mean_tps": 1845.613599,
+              "stddev_tps": 11.010205,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            },
+            "32768": {
+              "token_count": 32768,
+              "mean_tps": 1733.954705,
+              "stddev_tps": 4.611164,
+              "repetitions": 5,
+              "unit": "tokens/s"
+            }
+          },
+          "repetitions": 5
+        },
+        "server_performance": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-134928-3e5192",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "batch_size": 2048,
+            "cache_prompt": false,
+            "cache_type_k": "f16",
+            "cache_type_v": "f16",
+            "concurrencies": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "ctx_size": 8192,
+            "flash_attn": true,
+            "gen_tokens": 512,
+            "n_gpu_layers": 999,
+            "parallel": 8,
+            "repetitions": 3,
+            "request_timeout_s": 900,
+            "requests_per_concurrency": 4,
+            "spec_draft_n_max": 3,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think",
+            "threads": 20,
+            "ubatch_size": 512
+          },
+          "formal": true,
+          "concurrencies": [
+            1,
+            2,
+            4,
+            8
+          ],
+          "requests_per_concurrency": 4,
+          "repetitions": 3,
+          "gen_tokens": 512,
+          "samples_count": 180,
+          "conditions": [
+            {
+              "concurrency": 1,
+              "repetitions": 3,
+              "requests_per_repetition": 4,
+              "successful_requests": 12,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 56.60485843261435,
+                "stddev": 0.3374001637125532,
+                "min": 56.21556912088953,
+                "max": 56.8128913036629
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 56.60834484370213,
+                "stddev": 0.4495145905997768,
+                "min": 55.78741149416606,
+                "max": 57.37666277241076
+              },
+              "latency_p50_s": {
+                "mean": 9.037533998169238,
+                "stddev": 0.04366959242275713,
+                "min": 9.00719816900164,
+                "max": 9.087585095003305
+              },
+              "latency_p95_s": {
+                "mean": 9.109251460200783,
+                "stddev": 0.05057776498589905,
+                "min": 9.0651013900002,
+                "max": 9.164435237151702
+              },
+              "latency_p99_s": {
+                "mean": 9.116487021640374,
+                "stddev": 0.054515706359437144,
+                "min": 9.067203813999658,
+                "max": 9.175045233831115
+              }
+            },
+            {
+              "concurrency": 2,
+              "repetitions": 3,
+              "requests_per_repetition": 8,
+              "successful_requests": 24,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 89.67225831498317,
+                "stddev": 6.645843742003985,
+                "min": 82.3169905139992,
+                "max": 95.24521955527423
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 45.03382476709767,
+                "stddev": 4.123105195930616,
+                "min": 40.65736192080007,
+                "max": 50.2220034332913
+              },
+              "latency_p50_s": {
+                "mean": 11.322586347665492,
+                "stddev": 1.079357967782422,
+                "min": 10.304379113498726,
+                "max": 12.454148110999085
+              },
+              "latency_p95_s": {
+                "mean": 12.278384414366034,
+                "stddev": 0.24211503329140185,
+                "min": 12.08987505779769,
+                "max": 12.551434663653344
+              },
+              "latency_p99_s": {
+                "mean": 12.293013665272229,
+                "stddev": 0.2579416750631493,
+                "min": 12.095071642757029,
+                "max": 12.58472316393265
+              }
+            },
+            {
+              "concurrency": 4,
+              "repetitions": 3,
+              "requests_per_repetition": 16,
+              "successful_requests": 48,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 126.53088947201174,
+                "stddev": 1.1716627380070366,
+                "min": 125.64426956969858,
+                "max": 127.85919797302634
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 31.653492185528084,
+                "stddev": 0.6827165374229222,
+                "min": 29.71550941223574,
+                "max": 32.635091173589046
+              },
+              "latency_p50_s": {
+                "mean": 16.09041274166763,
+                "stddev": 0.11740530964286527,
+                "min": 16.00903444100186,
+                "max": 16.225001763501496
+              },
+              "latency_p95_s": {
+                "mean": 16.623797173415976,
+                "stddev": 0.5264298616051861,
+                "min": 16.281799364747712,
+                "max": 17.23000467525162
+              },
+              "latency_p99_s": {
+                "mean": 16.62416840801367,
+                "stddev": 0.5261185976372363,
+                "min": 16.28272352494532,
+                "max": 17.230048663047274
+              }
+            },
+            {
+              "concurrency": 8,
+              "repetitions": 3,
+              "requests_per_repetition": 32,
+              "successful_requests": 96,
+              "failed_requests": 0,
+              "failure_rate": 0.0,
+              "aggregate_generation_throughput_tps": {
+                "mean": 152.0945509385054,
+                "stddev": 1.7822462800921508,
+                "min": 150.06476592419688,
+                "max": 153.40335057328463
+              },
+              "per_request_generation_throughput_tps": {
+                "mean": 19.02125628891885,
+                "stddev": 0.37539972369430247,
+                "min": 18.49643922308635,
+                "max": 19.50852033231086
+              },
+              "latency_p50_s": {
+                "mean": 26.932617610832192,
+                "stddev": 0.6018496852101175,
+                "min": 26.439971820997016,
+                "max": 27.603438017998997
+              },
+              "latency_p95_s": {
+                "mean": 27.421031956568186,
+                "stddev": 0.39308252303878444,
+                "min": 26.96877600299995,
+                "max": 27.680510859352943
+              },
+              "latency_p99_s": {
+                "mean": 27.422218895408367,
+                "stddev": 0.39197079996253803,
+                "min": 26.971239015117753,
+                "max": 27.68093486003854
+              }
+            }
+          ]
+        },
+        "knowledge": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-140212-bd7c3f",
+          "evaluator_version": "1.2",
+          "condition": {
+            "dataset_version": "legacy v1",
+            "max_tokens": 128,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.2,
+          "total": 100,
+          "correct": 96,
+          "accuracy": 0.96,
+          "pass_rate": 0.96,
+          "categories": {
+            "general": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "korea": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "math": {
+              "total": 20,
+              "correct": 17,
+              "accuracy": 0.85,
+              "pass_rate": 0.85
+            },
+            "science": {
+              "total": 20,
+              "correct": 20,
+              "accuracy": 1.0,
+              "pass_rate": 1.0
+            },
+            "logic": {
+              "total": 20,
+              "correct": 19,
+              "accuracy": 0.95,
+              "pass_rate": 0.95
+            }
+          },
+          "difficulties": {
+            "unspecified": {}
+          }
+        },
+        "coding": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-140234-7d77aa",
+          "evaluator_version": "existing-v1",
+          "condition": {
+            "dataset_version": 1,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1,
+          "total": 12,
+          "passed": 11,
+          "pass_rate": 0.9166666666666666,
+          "categories": {
+            "basic": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "string": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "collection": {
+              "total": 3,
+              "passed": 3,
+              "pass_rate": 1.0
+            },
+            "edge_case": {
+              "total": 3,
+              "passed": 2,
+              "pass_rate": 0.6666666666666666
+            }
+          },
+          "failure_types": {
+            "syntax_error": 1
+          }
+        },
+        "tool_call": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-140302-bca0d1",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 15,
+          "passed": 11,
+          "pass_rate": 0.7333333333333333,
+          "tool_selection_accuracy": 0.9333333333333333,
+          "argument_accuracy": 0.8,
+          "execution_success_rate": 0.8666666666666667,
+          "tool_rate": 0.9333333333333333,
+          "args_rate": 0.8,
+          "exec_rate": 0.8666666666666667,
+          "failure_types": {
+            "wrong_arguments": 2,
+            "wrong_tool": 1,
+            "execution_error": 1
+          }
+        },
+        "agent_single": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-140324-d144e6",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 6,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 12,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.75,
+          "avg_steps": 3.25,
+          "avg_tool_calls": 2.25,
+          "tool_calls_total": 27,
+          "failed_tool_calls": 2,
+          "repeated_tool_calls": 4,
+          "failure_types": {
+            "missing_required_step": 3
+          }
+        },
+        "agent_multi": {
+          "status": "available",
+          "source_type": "fresh_full_cycle",
+          "source_run_id": "20260918-140401-c3a2f2",
+          "evaluator_version": "1.1",
+          "condition": {
+            "dataset_version": 1,
+            "max_steps": 8,
+            "request_timeout_s": 900,
+            "spec_type": "none",
+            "thinking_budget": 0,
+            "thinking_mode": "no-think"
+          },
+          "version": 1.1,
+          "total": 10,
+          "passed": 9,
+          "correct": 9,
+          "pass_rate": 0.9,
+          "handoff_success_rate": 1.0,
+          "role_participation_success_rate": 1.0,
+          "avg_steps": 4.1,
+          "avg_tool_calls": 3.1,
+          "tool_calls_total": 31,
+          "failed_tool_calls": 7,
+          "invalid_tool_calls": 0,
+          "handoffs": 11,
+          "failure_types": {
+            "wrong_tool": 1
+          }
+        },
+        "external_tool_eval": {
+          "status": "available",
+          "source_type": "fresh_external_evaluator",
+          "source_run_id": "2026-09-18T05-46-48.882631Z_3d816490",
+          "evaluator_version": "2.6.1.dev66+g32862e97a",
+          "condition": {
+            "scenario_set": "standard",
+            "scenario_count": 69,
+            "seed": 42,
+            "temperature": 0.0,
+            "thinking_mode": "no-think",
+            "parallel": 1,
+            "server_ctx": 32768,
+            "server_parallel": 1,
+            "spec_type": "none"
+          },
+          "version": "2.6.1.dev66+g32862e97a",
+          "score": 86,
+          "rating": "★★★★ Good",
+          "attempted": 69,
+          "scored": 65,
+          "points": 112,
+          "max_points": 130,
+          "passed": 51,
+          "partial": 10,
+          "failed": 4,
+          "deployability": 82,
+          "responsiveness": 72,
+          "median_turn_ms": 1590.6,
+          "worst_category": "M Autonomous Planning (33%)",
+          "worst_category_percent": 33,
+          "safety_gate_passed": false,
+          "safety_warning_count": 1,
+          "excluded_count": 4,
+          "exclusion_reason": "llama.cpp structured-output grammar HTTP 400",
+          "completion_rate": 94.2
+        }
+      },
+      "provenance": {
+        "hardware": "NVIDIA DGX Spark GB10",
+        "reasoning_mode": "off",
+        "raw_artifacts_public": false
+      },
+      "model_family_slug": "occamy-1-0",
+      "mtp_mode": "non-mtp",
+      "server_command": "llama-server -m <MODEL_FILE> --host <HOST> --port <PORT> --ctx-size 8192 --n-gpu-layers 999 --flash-attn on --batch-size 2048 --ubatch-size 512 --threads 20 --metrics --slots --parallel 8 --cache-type-k f16 --cache-type-v f16 --spec-type none"
     }
   ],
   "counts": {
-    "models": 23,
+    "models": 32,
     "suites": 8,
     "revalidated_evaluator_runs": 76,
     "reused_source_runs": 57,
-    "fresh_full_cycle_runs": 28,
-    "source_run_references": 169,
-    "external_evaluator_runs": 8
+    "fresh_full_cycle_runs": 91,
+    "source_run_references": 241,
+    "external_evaluator_runs": 17
   }
 }

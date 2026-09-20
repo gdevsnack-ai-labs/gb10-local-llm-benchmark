@@ -23,23 +23,23 @@ def main() -> int:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
 
     assert projection["release_id"] == "gb10-local-llm-benchmark"
-    assert projection["scope"]["model_variant_count"] == len(projection["models"]) == 23
+    assert projection["scope"]["model_variant_count"] == len(projection["models"]) == 32
     assert projection["scope"]["suite_count"] == 8
-    assert projection["scope"]["source_run_references"] == 169
-    assert projection["scope"]["external_evaluator_runs"] == 8
-    assert projection["scope"]["fresh_full_cycle_runs"] == 28
+    assert projection["scope"]["source_run_references"] == 241
+    assert projection["scope"]["external_evaluator_runs"] == 17
+    assert projection["scope"]["fresh_full_cycle_runs"] == 91
     assert projection["counts"] == {
-        "models": 23,
+        "models": 32,
         "suites": 8,
         "revalidated_evaluator_runs": 76,
         "reused_source_runs": 57,
-        "fresh_full_cycle_runs": 28,
-        "source_run_references": 169,
-        "external_evaluator_runs": 8,
+        "fresh_full_cycle_runs": 91,
+        "source_run_references": 241,
+        "external_evaluator_runs": 17,
     }
 
     model_ids = {model["model_id"] for model in projection["models"]}
-    assert len(model_ids) == 23
+    assert len(model_ids) == 32
     ling = next(model for model in projection["models"] if model["model_family_slug"] == "ling-3-0-flash")
     assert ling["variant"] == "Heretic MXFP4"
     assert ling["quantization"] == "MXFP4_MOE"
@@ -57,7 +57,21 @@ def main() -> int:
     assert n25["suites"]["server_performance"]["condition"]["spec_type"] == "none"
     assert len(n25["suites"]) == 8
     available_external = [model for model in projection["models"] if model["suites"]["external_tool_eval"]["status"] == "available"]
-    assert len(available_external) == 8
+    assert len(available_external) == 17
+    occamy_expected = {
+        "occamy-1-0-q4-k-m": ("Q4_K_M", 94, 87),
+        "occamy-1-0-q5-k-m": ("Q5_K_M", 95, 85),
+        "occamy-1-0-q6-k": ("Q6_K", 96, 86),
+        "occamy-1-0-q8-0": ("Q8_0", 96, 86),
+    }
+    for model_id, (quantization, knowledge, external_score) in occamy_expected.items():
+        occamy = next(model for model in projection["models"] if model["model_id"] == model_id)
+        standard_suites = ("performance", "server_performance", "knowledge", "coding", "tool_call", "agent_single", "agent_multi")
+        assert occamy["model"] == "Occamy 1.0"
+        assert occamy["variant"] == quantization
+        assert all(occamy["suites"][suite]["status"] == "available" for suite in standard_suites)
+        assert occamy["suites"]["knowledge"]["correct"] == knowledge
+        assert occamy["suites"]["external_tool_eval"]["score"] == external_score
     n25_q6 = next(model for model in projection["models"] if model["model_id"] == "n2-5-mini-q6-k")
     assert n25_q6["suites"]["external_tool_eval"]["source_run_id"] == "2026-09-15T16-13-37.913042Z_cd735d31"
     assert n25_q6["suites"]["external_tool_eval"]["score"] == 91
